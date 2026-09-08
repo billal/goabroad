@@ -1,60 +1,250 @@
+﻿:host {
+  display: block;
+}
 .hero {
-  padding-block: clamp(2rem, 6vw, 5rem);
-  max-width: 53rem;
+  display: grid;
+  gap: 3rem;
+  padding-block: 4rem;
+  align-items: center;
 }
 h1 {
-  font-size: clamp(2.25rem, 5vw, 4rem);
-  line-height: 1.18;
-  letter-spacing: -0.035em;
-  margin-block: 1rem 1.5rem;
+  font-family: Georgia, 'Nirmala UI', serif;
+  font-weight: 400;
+  font-size: clamp(2.6rem, 4.4vw, 4rem);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+  margin: 1.5rem 0;
 }
-.intro {
-  font-size: 1.125rem;
-  max-width: 42rem;
-  color: var(--muted);
-}
-.actions {
+.hero .eyebrow {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 0.6rem;
+  max-width: 25rem;
 }
+.tiny-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+}
+.intro {
+  font-size: 1.1rem;
+  max-width: 30rem;
+  margin-bottom: 2rem;
+}
+p {
+  color: var(--muted);
+}
+.hero-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  margin-top: 1.4rem;
+}
+.hero-note app-icon {
+  width: 1rem;
+  height: 1rem;
+}
+.icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  background: #e4eee7;
+  color: var(--green);
+  border-radius: 0.8rem;
+  flex-shrink: 0;
+}
+.principle-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  justify-content: space-between;
+  padding: 1.6rem 0;
+  border-block: 1px solid var(--border);
+}
+.principle-strip span {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+.principle-strip app-icon {
+  width: 1.2rem;
+}
+.pathways,
 .journey {
-  padding-block: 1.5rem 4rem;
-  border-top: 1px solid var(--border);
+  padding-block: 4.5rem 1rem;
+  scroll-margin-top: 2rem;
+}
+.section-heading {
+  margin-bottom: 2rem;
 }
 h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-}
-.cards {
-  display: grid;
-  gap: 1rem;
-}
-article {
-  padding: 1.5rem;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
-}
-.step {
-  color: var(--green);
-  font-weight: 700;
-  font-size: 0.875rem;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  margin: 0.75rem 0;
 }
 h3 {
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin: 0.8rem 0;
 }
-article p {
-  margin-bottom: 0;
+.path-grid,
+.journey-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+.path-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #edf2ec;
+  padding: 2rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.path-card.work {
+  background: #f5f0e5;
+}
+.work .icon-tile {
+  background: #e8dec9;
+  color: #65532e;
+}
+.path-card .eyebrow {
+  margin: 1.5rem 0 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+.path-card h3 {
+  font-size: 1.65rem;
+}
+.path-card p:not(.eyebrow) {
+  max-width: 28rem;
+  margin: 0 0 2rem;
+}
+.path-card a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  border-top: 1px solid #cbd7cd;
+  padding-top: 1rem;
+  margin-top: auto;
+  text-decoration: none;
+  font-weight: 650;
+  z-index: 1;
+}
+.path-card a:hover {
+  text-decoration: underline;
+}
+.card-orbit {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  border: 1px solid #547c6920;
+  border-radius: 50%;
+  right: -3rem;
+  top: -3rem;
+  box-shadow:
+    0 0 0 1.5rem #547c6905,
+    0 0 0 3rem #547c6904;
+  pointer-events: none;
+}
+.journey-grid article {
+  position: relative;
+  padding: 1.5rem 1.5rem 1rem 0;
+  border-top: 1px solid var(--border);
+}
+.step {
+  display: block;
+  font-size: 0.75rem;
   color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+.journey-grid article > app-icon {
+  color: var(--green);
+}
+.journey-grid p {
+  font-size: 0.94rem;
+}
+.principles {
+  display: grid;
+  gap: 3rem;
+  margin-block: 4rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+.principles h2 {
+  margin-top: 1.5rem;
+}
+.principles-list article {
+  display: flex;
+  gap: 1rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.principles-list article:last-child {
+  border: 0;
+}
+.principles-list app-icon {
+  color: var(--green);
+  margin-top: 0.3rem;
+}
+.principles-list h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+.principles-list p {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+}
+.closing {
+  text-align: center;
+  padding: 1rem 0 5rem;
+}
+.closing > app-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--green);
+}
+.closing .button {
+  margin-top: 1rem;
 }
 :host-context([lang='bn']) h1 {
   line-height: 1.5;
   letter-spacing: normal;
+  font-size: clamp(2.2rem, 3.6vw, 3.3rem);
 }
 @media (min-width: 48rem) {
-  .cards {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .hero {
+    grid-template-columns: 1.15fr 1fr;
+    gap: 3.5rem;
+  }
+  .path-grid,
+  .principles {
+    grid-template-columns: 1fr 1fr;
+  }
+  .journey-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 30rem) {
+  .hero {
+    padding-top: 2rem;
+  }
+  .path-card {
+    padding: 1.5rem;
   }
 }

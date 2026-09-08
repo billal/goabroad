@@ -1,31 +1,110 @@
-<section class="hero" aria-labelledby="home-heading">
-  <p class="eyebrow">{{ i18n.text().eyebrow }}</p>
-  <h1 id="home-heading">{{ i18n.text().headline }}</h1>
-  <p class="intro">{{ i18n.text().intro }}</p>
-  <div class="actions">
-    <a class="button" [routerLink]="['/', i18n.language(), 'student']"
-      >{{ i18n.text().studentAction }} <span aria-hidden="true">↗</span></a
-    >
-    <a [routerLink]="['/', i18n.language(), 'programs']">{{ i18n.text().explore }}</a>
+﻿<section class="hero" aria-labelledby="home-heading">
+  <div class="hero-copy">
+    <p class="eyebrow">
+      <span class="tiny-dot" aria-hidden="true"></span>{{ i18n.text().eyebrow }}
+    </p>
+    <h1 id="home-heading">{{ i18n.text().headline }}</h1>
+    <p class="intro">{{ i18n.text().intro }}</p>
+    <a class="button" [routerLink]="['/', i18n.language()]" fragment="pathways"
+      >{{ copy().choose }} <app-icon name="arrow"
+    /></a>
+    <p class="hero-note">
+      <app-icon name="check" />{{ copy().noAccount }}<span aria-hidden="true">·</span> English &
+      বাংলা
+    </p>
+  </div>
+  <app-horizon [text]="copy()" />
+</section>
+<div class="principle-strip">
+  <span><app-icon name="compass" />{{ copy().planning }}</span
+  ><span><app-icon name="lock" />{{ copy().noAccount }}</span
+  ><span><app-icon name="globe" />English & বাংলা</span>
+</div>
+<section id="pathways" class="pathways" aria-labelledby="path-heading">
+  <div class="section-heading">
+    <p class="eyebrow">{{ copy().accent }}</p>
+    <h2 id="path-heading">{{ copy().start }}</h2>
+    <p>{{ copy().startText }}</p>
+  </div>
+  <div class="path-grid">
+    <article class="path-card">
+      <span class="icon-tile"><app-icon name="study" /></span>
+      <p class="eyebrow">{{ copy().studyTag }}</p>
+      <h3>{{ copy().study }}</h3>
+      <p>{{ copy().studyText }}</p>
+      <a [routerLink]="['/', i18n.language(), 'student']"
+        >{{ i18n.text().studentAction }}<app-icon name="arrow" /></a
+      ><span class="card-orbit" aria-hidden="true"></span>
+    </article>
+    <article class="path-card work">
+      <span class="icon-tile"><app-icon name="work" /></span>
+      <p class="eyebrow">{{ copy().workTag }}</p>
+      <h3>{{ copy().work }}</h3>
+      <p>{{ copy().workText }}</p>
+      <a [routerLink]="['/', i18n.language(), 'job-seeker']"
+        >{{ i18n.text().jobAction }}<app-icon name="arrow" /></a
+      ><span class="card-orbit" aria-hidden="true"></span>
+    </article>
   </div>
 </section>
 <section class="journey" aria-labelledby="journey-heading">
-  <h2 id="journey-heading">{{ i18n.text().journey }}</h2>
-  <div class="cards">
+  <div class="section-heading">
+    <p class="eyebrow">{{ copy().how }}</p>
+    <h2 id="journey-heading">{{ i18n.text().journey }}</h2>
+  </div>
+  <div class="journey-grid">
     <article>
-      <span class="step" aria-hidden="true">01</span>
+      <span class="step">01</span><app-icon name="document" />
       <h3>{{ i18n.text().profileTitle }}</h3>
       <p>{{ i18n.text().profileText }}</p>
     </article>
     <article>
-      <span class="step" aria-hidden="true">02</span>
+      <span class="step">02</span><app-icon name="check" />
       <h3>{{ i18n.text().optionsTitle }}</h3>
       <p>{{ i18n.text().optionsText }}</p>
     </article>
     <article>
-      <span class="step" aria-hidden="true">03</span>
+      <span class="step">03</span><app-icon name="compass" />
       <h3>{{ i18n.text().decisionTitle }}</h3>
       <p>{{ i18n.text().decisionText }}</p>
     </article>
   </div>
+</section>
+<section class="principles" aria-labelledby="principles-heading">
+  <div>
+    <span class="icon-tile"><app-icon name="compass" /></span>
+    <h2 id="principles-heading">{{ copy().principles }}</h2>
+    <p>{{ copy().principlesText }}</p>
+  </div>
+  <div class="principles-list">
+    <article>
+      <app-icon name="lock" />
+      <div>
+        <h3>{{ copy().privacy }}</h3>
+        <p>{{ copy().privacyText }}</p>
+      </div>
+    </article>
+    <article>
+      <app-icon name="document" />
+      <div>
+        <h3>{{ copy().honest }}</h3>
+        <p>{{ copy().honestText }}</p>
+      </div>
+    </article>
+    <article>
+      <app-icon name="globe" />
+      <div>
+        <h3>{{ copy().bilingual }}</h3>
+        <p>{{ copy().bilingualText }}</p>
+      </div>
+    </article>
+  </div>
+</section>
+<section class="closing" aria-labelledby="closing-heading">
+  <app-icon name="globe" />
+  <h2 id="closing-heading">{{ copy().ready }}</h2>
+  <p>{{ copy().readyText }}</p>
+  <a class="button" [routerLink]="['/', i18n.language()]" fragment="pathways"
+    >{{ copy().choose }}<app-icon name="arrow"
+  /></a>
 </section>

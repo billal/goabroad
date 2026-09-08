@@ -13,6 +13,8 @@ import { sampleCatalog } from '../../core/models/sample-catalog.spec-helper';
 import { LanguageService } from '../../core/i18n/language.service';
 import { DRAFT_KEY } from './assessment-storage';
 import { validAnswers } from './assessment.spec-helper';
+import { AssessmentSession } from '../../core/services/assessment-session';
+import { profileFixture } from '../../core/services/eligibility.spec-helper';
 describe('Student questionnaire', () => {
   const catalog = validateCatalog(sampleCatalog);
   beforeEach(() => {
@@ -56,8 +58,10 @@ describe('Student questionnaire', () => {
     expect(app.completed()?.annualTuitionBudget.currency).toBe('USD');
     expect(sessionStorage.getItem(DRAFT_KEY)).toBeNull();
     expect((fixture.nativeElement as HTMLElement).textContent).toContain(
-      'Eligibility matching is not available yet',
+      'Your questionnaire is complete',
     );
+    expect(TestBed.inject(AssessmentSession).profile()?.annualTuitionBudget.currency).toBe('USD');
+    expect((fixture.nativeElement as HTMLElement).querySelector('a[href*="programs"]')).toBeNull();
   });
   it('resumes after recreation and preserves answers when the language changes', async () => {
     const fixture = await create();
@@ -77,6 +81,11 @@ describe('Student questionnaire', () => {
     fixture.componentInstance.reset();
     expect(sessionStorage.getItem(DRAFT_KEY)).toBeNull();
     expect(fixture.componentInstance.form.controls.gpa.value).toBe('');
+  });
+  it('clears a previous completed profile when a new questionnaire is opened', async () => {
+    TestBed.inject(AssessmentSession).set(profileFixture());
+    await create();
+    expect(TestBed.inject(AssessmentSession).profile()).toBeNull();
   });
   it('does not finish invalid answers even from review', async () => {
     const fixture = await create();

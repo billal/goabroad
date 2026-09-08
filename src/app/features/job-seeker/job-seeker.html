@@ -1,0 +1,158 @@
+<section class="assessment-page" aria-labelledby="job-heading">
+  <h1 id="job-heading">{{ i18n.text().jobSeeker }}</h1>
+  <p>{{ t('intro') }}</p>
+  <p class="notice">{{ t('notice') }}</p>
+  <p>{{ t('privacy') }}</p>
+  @if (storage.unavailable()) {
+    <p role="status">{{ t('storage') }}</p>
+  }
+  @if (completed()) {
+    <h2 data-step-heading tabindex="-1">{{ t('done') }}</h2>
+    <p role="status">{{ t('doneText') }}</p>
+    <section class="profile-summary" aria-labelledby="profile-summary-heading">
+      <h2 id="profile-summary-heading">{{ t('summaryTitle') }}</h2>
+      <p>{{ t('selfReported') }}</p>
+      <div class="summary-groups">
+        @for (fields of steps; track $index; let index = $index) {
+          <section class="review" [attr.aria-labelledby]="'summary-group-' + index">
+            <h3 [id]="'summary-group-' + index">{{ t(titles[index]) }}</h3>
+            <dl>
+              @for (row of summary(); track row.field) {
+                @if (fields.includes(row.field)) {
+                  <dt>{{ t(row.field) }}</dt>
+                  <dd [attr.data-summary-field]="row.field">{{ summaryValue(row) }}</dd>
+                }
+              }
+            </dl>
+            <button
+              type="button"
+              class="secondary"
+              [attr.aria-label]="t('edit') + ' ' + t(titles[index])"
+              (click)="editSummary(fields[0])"
+            >
+              {{ t('edit') }}
+            </button>
+          </section>
+        }
+      </div>
+      <section class="notice" aria-labelledby="missing-heading">
+        <h3 id="missing-heading">{{ t('missingTitle') }}</h3>
+        @if (missing().length) {
+          <p>{{ t('missingHint') }}</p>
+          <ul class="missing-fields">
+            @for (row of missing(); track row.field) {
+              <li>
+                <span>{{ t(row.field) }}</span
+                ><button
+                  type="button"
+                  class="secondary"
+                  [attr.aria-label]="t('addInformation') + ': ' + t(row.field)"
+                  (click)="editSummary(row.field)"
+                >
+                  {{ t('addInformation') }}
+                </button>
+              </li>
+            }
+          </ul>
+        } @else {
+          <p>{{ t('noMissing') }}</p>
+        }
+      </section>
+      <p>{{ t('summaryEditHint') }}</p>
+    </section>
+    <button type="button" (click)="reset()">{{ t('new') }}</button>
+  } @else {
+    @if (restored()) {
+      <p role="status">{{ t('restored') }}</p>
+    }
+    <p>{{ t('step') }} {{ step() + 1 }} {{ t('of') }} 4</p>
+    <ol class="steps">
+      @for (title of titles; track title; let index = $index) {
+        <li [attr.aria-current]="step() === index ? 'step' : null">{{ t(title) }}</li>
+      }
+    </ol>
+    <h2 data-step-heading tabindex="-1">{{ t(titles[step()]) }}</h2>
+    @if (step() === 3) {
+      @for (fields of steps; track $index; let index = $index) {
+        <section class="review" [attr.aria-label]="t(titles[index])">
+          <h3>{{ t(titles[index]) }}</h3>
+          <button
+            type="button"
+            class="secondary"
+            [attr.aria-label]="t('edit') + ' ' + t(titles[index])"
+            (click)="go(index)"
+          >
+            {{ t('edit') }}
+          </button>
+          <dl>
+            @for (field of fields; track field) {
+              <dt>{{ t(field) }}</dt>
+              <dd>{{ form.controls[field].value.trim() || t('unknown') }}</dd>
+            }
+          </dl>
+        </section>
+      }
+      <div class="actions">
+        <button type="button" class="secondary" (click)="go(2)">{{ t('back') }}</button
+        ><button type="button" (click)="finish()">{{ t('finish') }}</button>
+      </div>
+    } @else {
+      <p id="job-step-hint">{{ t(hints[step()]) }}</p>
+      <p id="job-list-hint">{{ t('listHint') }}</p>
+      <form [formGroup]="form" (ngSubmit)="next()" novalidate>
+        @if (attempted() && form.invalid) {
+          <p class="error" role="alert">{{ t('validation') }}</p>
+        }
+        <div class="fields">
+          @for (field of steps[step()]; track field) {
+            <div>
+              <label [for]="'job-' + field"
+                >{{ t(field) }}
+                @if (!required(field)) {
+                  <span>({{ t('optional') }})</span>
+                }
+              </label>
+              <input
+                [id]="'job-' + field"
+                type="text"
+                [formControlName]="field"
+                maxlength="500"
+                autocomplete="off"
+                [attr.inputmode]="field === 'experienceMonths' ? 'numeric' : 'text'"
+                [attr.aria-required]="required(field)"
+                [attr.aria-invalid]="error(field) ? 'true' : null"
+                [attr.aria-describedby]="
+                  'job-step-hint job-list-hint' + (error(field) ? ' job-error-' + field : '')
+                "
+              />
+              @if (error(field); as error) {
+                <p class="error" [id]="'job-error-' + field">{{ error }}</p>
+              }
+            </div>
+          }
+        </div>
+        <div class="actions">
+          @if (step() > 0) {
+            <button type="button" class="secondary" (click)="go(step() - 1)">
+              {{ t('back') }}
+            </button>
+          }
+          <button type="submit">{{ step() === 2 ? t('review') : t('next') }}</button>
+        </div>
+      </form>
+    }
+    <div class="reset">
+      @if (confirming()) {
+        <p>{{ t('confirm') }}</p>
+        <button type="button" class="secondary" (click)="reset()">{{ t('reset') }}</button
+        ><button type="button" class="secondary" (click)="confirming.set(false)">
+          {{ t('cancel') }}
+        </button>
+      } @else {
+        <button type="button" class="secondary" (click)="confirming.set(true)">
+          {{ t('reset') }}
+        </button>
+      }
+    </div>
+  }
+</section>

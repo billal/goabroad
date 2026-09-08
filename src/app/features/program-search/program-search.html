@@ -1,0 +1,150 @@
+<section aria-labelledby="program-heading">
+  <h1 id="program-heading">{{ i18n.text().programs }}</h1>
+  <p>{{ t('intro') }}</p>
+  @if (session.profile()) {
+    <p class="notice">{{ t('profile') }}</p>
+    <p>{{ t('preferences') }}</p>
+    <button type="button" class="secondary" (click)="session.clear()">{{ t('forget') }}</button>
+    <p class="notice">{{ t('disclaimer') }}</p>
+  } @else {
+    <p>{{ t('noProfile') }}</p>
+  }
+  <p>
+    <a [routerLink]="['/', i18n.language(), 'student']">{{ t('assessment') }}</a>
+  </p>
+  @if (loading()) {
+    <p role="status">{{ t('loading') }}</p>
+  } @else if (failed()) {
+    <p role="alert">{{ t('error') }}</p>
+    <button type="button" (click)="load()">{{ t('retry') }}</button>
+  } @else {
+    @if (data()?.notice; as notice) {
+      <p class="notice">{{ name(notice) }}</p>
+    }
+    <form [formGroup]="form" (ngSubmit)="apply()" novalidate aria-labelledby="filter-heading">
+      <h2 id="filter-heading">{{ t('filters') }}</h2>
+      <p id="filter-hint">{{ t('filterHint') }}</p>
+      <p id="filter-error" tabindex="-1" role="alert" [hidden]="!invalid()">{{ t('invalid') }}</p>
+      <div class="filters">
+        @for (key of keys; track key) {
+          <div class="field">
+            <label [for]="'filter-' + key">{{ t(key) }}</label>
+            @if (options(key); as options) {
+              <select [id]="'filter-' + key" [formControlName]="key">
+                <option value="">{{ t('all') }}</option>
+                @for (option of options; track option.value) {
+                  <option [value]="option.value">{{ option.label }}</option>
+                }
+              </select>
+            } @else {
+              <input
+                [id]="'filter-' + key"
+                type="text"
+                [formControlName]="key"
+                maxlength="100"
+                [attr.inputmode]="key === 'min' || key === 'max' ? 'decimal' : 'text'"
+                [attr.aria-describedby]="
+                  key === 'min' || key === 'max' || key === 'currency' || key === 'intake'
+                    ? 'filter-hint filter-error'
+                    : null
+                "
+              />
+            }
+          </div>
+        }
+      </div>
+      <div class="actions">
+        <button type="submit">{{ t('apply') }}</button
+        ><button type="button" class="secondary" (click)="clear()">{{ t('clear') }}</button>
+      </div>
+    </form>
+    <h2 id="search-results" tabindex="-1">{{ t('count') }}: {{ results().length }}</h2>
+    @if (!available()) {
+      <p role="status">{{ t('empty') }}</p>
+    } @else if (!results().length) {
+      <p role="status">{{ t('noMatch') }}</p>
+    }
+    @if (noEligible()) {
+      <p class="notice" role="status">{{ t('noEligible') }}</p>
+    }
+    @for (result of results(); track result.program.id) {
+      <article [attr.aria-labelledby]="'program-' + result.program.id">
+        <h3 [id]="'program-' + result.program.id">{{ name(result.program.name) }}</h3>
+        <p>
+          {{ name(result.institution.name) }} ·
+          {{ reference(result.program.countryId, 'countries') }} ·
+          {{ reference(result.program.cityId, 'cities') }}
+        </p>
+        <p>
+          {{ reference(result.program.degreeLevelId, 'degrees') }} ·
+          {{ reference(result.program.subjectId, 'subjects') }}
+        </p>
+        <p>{{ t('tuition') }}: {{ money(result.program) }}</p>
+        <p>{{ t('scholarship') }}: {{ scholarship(result.program) }}</p>
+        <p>
+          {{ t(result.program.verificationStatus) }} · {{ t('lastChecked') }}:
+          {{ result.program.lastCheckedAt ?? t('unknown') }}
+        </p>
+        @if (result.eligibility; as eligibility) {
+          <h4>{{ t(eligibility.classification) }}</h4>
+          @if (eligibility.mandatoryFailures.length) {
+            <p class="failure">
+              <strong>{{ t('failed') }}:</strong>
+              @for (rule of eligibility.mandatoryFailures; track rule) {
+                <span>{{ t(rule) }}; </span>
+              }
+            </p>
+          }
+          <p>{{ t('evaluated') }}: {{ eligibility.evaluatedAt }}</p>
+          <details>
+            <summary>{{ t('details') }}</summary>
+            <ul class="requirements">
+              @for (rule of eligibility.requirements; track rule.rule) {
+                <li [class.failure]="rule.status === 'notMet'">
+                  <strong>{{ t(rule.rule) }}: {{ t(rule.status) }}</strong>
+                  <p>
+                    {{
+                      t(
+                        rule.mandatory === true
+                          ? 'mandatory'
+                          : rule.mandatory === false
+                            ? 'optional'
+                            : 'mandatoryUnknown'
+                      )
+                    }}
+                  </p>
+                  <p>{{ requirement(result.program, rule.rule) }}</p>
+                  <p>{{ t(rule.reason) }}</p>
+                  @for (source of sourceList(result.program, rule.sourceIds); track source.id) {
+                    <a [href]="source.url" target="_blank" rel="noopener noreferrer">{{
+                      source.title
+                    }}</a
+                    ><span> · {{ t('lastChecked') }}: {{ source.checkedAt ?? t('unknown') }}</span>
+                  } @empty {
+                    <p>{{ t('noSources') }}</p>
+                  }
+                </li>
+              }
+            </ul>
+          </details>
+          <p class="disclaimer">{{ t('disclaimer') }}</p>
+        }
+        <p>
+          <strong>{{ t('sources') }}</strong>
+        </p>
+        <ul>
+          @for (source of result.program.sources; track source.id) {
+            <li>
+              <a [href]="source.url" target="_blank" rel="noopener noreferrer">{{
+                source.title
+              }}</a>
+              · {{ t('lastChecked') }}: {{ source.checkedAt ?? t('unknown') }}
+            </li>
+          } @empty {
+            <li>{{ t('noSources') }}</li>
+          }
+        </ul>
+      </article>
+    }
+  }
+</section>

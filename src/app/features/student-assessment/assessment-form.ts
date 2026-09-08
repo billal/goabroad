@@ -39,39 +39,8 @@ export type FieldName = (typeof fieldNames)[number];
 /** Draft controls keep raw text so unfinished and invalid input can be resumed faithfully. */
 export type AssessmentDraft = { [K in FieldName]: string };
 export type AssessmentForm = FormGroup<{ [K in FieldName]: FormControl<string> }>;
-export interface ReferenceAnswer {
-  readonly id: string | null;
-  readonly reportedLabel: string | null;
-}
-export interface StudentProfile {
-  readonly nationality: ReferenceAnswer;
-  readonly residence: ReferenceAnswer;
-  readonly education: ReferenceAnswer;
-  readonly academicBackground: ReferenceAnswer;
-  readonly academicResult: { readonly value: number; readonly scale: number } | null;
-  readonly graduationYear: number;
-  readonly studyGapYears: number | null;
-  readonly workExperienceMonths: number | null;
-  readonly languageTest: {
-    readonly type: string;
-    readonly reportedName: string | null;
-    readonly overall: number;
-    readonly overallScale: number;
-    readonly reading: number | null;
-    readonly writing: number | null;
-    readonly listening: number | null;
-    readonly speaking: number | null;
-    readonly componentScale: number | null;
-  } | null;
-  readonly destination: ReferenceAnswer;
-  readonly additionalDestinationNames: readonly string[];
-  readonly preferredCityNames: readonly string[];
-  readonly degree: ReferenceAnswer;
-  readonly intendedSubjectNames: readonly string[];
-  readonly annualTuitionBudget: { readonly amount: number; readonly currency: string };
-  readonly preferredIntake: string;
-  readonly scholarshipRequired: boolean;
-}
+import type { ReferenceAnswer, StudentProfile } from '../../core/models/student-profile';
+export type { ReferenceAnswer, StudentProfile } from '../../core/models/student-profile';
 export const steps: readonly (readonly FieldName[])[] = [
   [
     'nationality',

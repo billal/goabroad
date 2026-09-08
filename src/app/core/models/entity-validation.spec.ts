@@ -120,6 +120,106 @@ function fixture(): Catalog {
 }
 
 describe('Nested entity contracts (test-only schema fixtures)', () => {
+  it.each([true, false, null])('preserves explicit scholarship availability %j', (value) => {
+    const catalog = fixture();
+    const program = {
+      ...catalog.programs.data[0],
+      scholarshipAvailability: { value, sourceIds: [] },
+    };
+    expect(
+      validateCatalog({ ...catalog, programs: collection([program]) }).programs.data[0]
+        .scholarshipAvailability?.value,
+    ).toBe(value);
+  });
+  it('treats legacy scholarship availability as unknown and rejects malformed known values', () => {
+    const catalog = fixture();
+    expect(validateCatalog(catalog).programs.data[0].scholarshipAvailability?.value).toBeNull();
+    expect(() =>
+      validateCatalog({
+        ...catalog,
+        programs: collection([
+          { ...catalog.programs.data[0], scholarshipAvailability: { value: 'yes', sourceIds: [] } },
+        ]),
+      }),
+    ).toThrow();
+    expect(() =>
+      validateCatalog({
+        ...catalog,
+        programs: collection([
+          {
+            ...catalog.programs.data[0],
+            scholarshipAvailability: { value: true, sourceIds: ['missing-source'] },
+          },
+        ]),
+      }),
+    ).toThrow();
+  });
+  it.each([undefined, null, 9])('retains optional language scale metadata %j', (scale) => {
+    const catalog = fixture();
+    const program = catalog.programs.data[0];
+    const language = {
+      test: 'ielts' as const,
+      testName: 'Schema fixture only',
+      minimumOverall: 6,
+      minimumReading: null,
+      minimumWriting: null,
+      minimumListening: null,
+      minimumSpeaking: null,
+      overallScale: scale,
+      componentScale: scale,
+    };
+    const result = validateCatalog({
+      ...catalog,
+      programs: collection([
+        {
+          ...program,
+          requirements: {
+            ...program.requirements,
+            language: { value: [language], mandatory: true, sourceIds: [] },
+          },
+        },
+      ]),
+    });
+    expect(result.programs.data[0].requirements.language.value?.[0].overallScale).toBe(
+      scale ?? null,
+    );
+    expect(result.programs.data[0].requirements.language.value?.[0].componentScale).toBe(
+      scale ?? null,
+    );
+  });
+  it.each([0, -1, '9', Infinity, 5])('rejects invalid language scale %j', (scale) => {
+    const catalog = fixture();
+    const program = catalog.programs.data[0];
+    expect(() =>
+      validateCatalog({
+        ...catalog,
+        programs: collection([
+          {
+            ...program,
+            requirements: {
+              ...program.requirements,
+              language: {
+                value: [
+                  {
+                    test: 'ielts',
+                    testName: 'Fixture',
+                    minimumOverall: 6,
+                    minimumReading: null,
+                    minimumWriting: null,
+                    minimumListening: null,
+                    minimumSpeaking: null,
+                    overallScale: scale,
+                  },
+                ],
+                mandatory: true,
+                sourceIds: [],
+              },
+            },
+          },
+        ]),
+      }),
+    ).toThrow();
+  });
   it('preserves explicit unknowns across all entity types without fabricating defaults', () => {
     const result = validateCatalog(fixture());
     expect(result.programs.data[0].requirements.language.value).toBeNull();

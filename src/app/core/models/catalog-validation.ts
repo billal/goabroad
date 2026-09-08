@@ -57,6 +57,10 @@ const gpa = D.object<M.GpaRequirement>({
   qualificationId: D.nullable(D.id),
 });
 const language = D.object<M.LanguageRequirement>({
+  overallScale: (value, path) =>
+    value === undefined || value === null ? null : positiveScale(value, path),
+  componentScale: (value, path) =>
+    value === undefined || value === null ? null : positiveScale(value, path),
   test: D.oneOf('ielts', 'toefl', 'pte', 'duolingo', 'other'),
   testName: D.text,
   minimumOverall: D.nullable(D.number),
@@ -65,6 +69,10 @@ const language = D.object<M.LanguageRequirement>({
   minimumListening: D.nullable(D.number),
   minimumSpeaking: D.nullable(D.number),
 });
+function positiveScale(value: unknown, path: string): number {
+  const result = D.number(value, path);
+  return result > 0 ? result : D.fail(path, 'expected positive scale');
+}
 const requirements = D.object<M.ProgramRequirements>({
   educationLevelIds: requirement(ids),
   academicSubjectIds: requirement(ids),
@@ -96,6 +104,8 @@ const program = D.object<M.Program>({
   requirements,
   requiredDocuments: claim(D.array(localized)),
   scholarships: claim(localized),
+  scholarshipAvailability: (value, path) =>
+    value === undefined ? { value: null, sourceIds: [] } : claim(D.boolean)(value, path),
   officialApplicationUrl: D.nullable(D.url),
 });
 const countryGuide = D.object<M.CountryGuide>({
@@ -284,6 +294,18 @@ export function validateCatalog(value: unknown): M.Catalog {
       (program.intakes.value ?? []).map((i) => i.id),
       `${program.id}.intakes`,
     );
+    for (const language of program.requirements.language.value ?? []) {
+      for (const [minimum, scale] of [
+        [language.minimumOverall, language.overallScale],
+        [language.minimumReading, language.componentScale],
+        [language.minimumWriting, language.componentScale],
+        [language.minimumListening, language.componentScale],
+        [language.minimumSpeaking, language.componentScale],
+      ]) {
+        if (minimum != null && scale != null && minimum > scale)
+          D.fail(program.id, 'language threshold exceeds its scale');
+      }
+    }
   }
   for (const guide of [...catalog.countryGuides.data, ...catalog.visaGuides.data])
     has(catalog.countries.data, guide.countryId, guide.id);

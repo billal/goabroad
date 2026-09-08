@@ -68,8 +68,25 @@
 </main>
 <footer>
   <div class="container">
-    <strong>Go Abroad</strong>
-    <p>{{ i18n.text().footer }}</p>
-    <p class="disclaimer">{{ i18n.text().disclaimer }}</p>
+    <div class="footer-grid">
+      <div>
+        <a class="brand" [routerLink]="['/', i18n.language()]" aria-label="Go Abroad"
+          ><span class="brand-mark" aria-hidden="true">↗</span>Go Abroad</a
+        >
+        <p>{{ i18n.text().footer }}</p>
+      </div>
+      <nav class="footer-links" [attr.aria-label]="i18n.text().navigation">
+        <strong>{{ i18n.text().journey }}</strong>
+        @for (item of navigation; track item.key) {
+          <a
+            [routerLink]="item.path ? ['/', i18n.language(), item.path] : ['/', i18n.language()]"
+            >{{ i18n.text()[item.key] }}</a
+          >
+        }
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="disclaimer">{{ i18n.text().disclaimer }}</p>
+    </div>
   </div>
 </footer>

@@ -32,7 +32,7 @@ export const assessmentEnglish = {
   review: 'Review your answers',
   done: 'Questionnaire complete',
   doneText:
-    'Your profile has been collected for this session. Eligibility matching is not available yet. No information has been submitted to an institution or agency.',
+    'Your questionnaire is complete. Completed answers stay in memory until refresh. No information has been submitted, and no eligibility results are shown at this stage.',
   new: 'Start a new questionnaire',
   reset: 'Clear and start again',
   confirmReset: 'Clear this draft?',
@@ -91,7 +91,7 @@ export const assessmentBengali: AssessmentText = {
   review: 'উত্তরগুলো পর্যালোচনা করুন',
   done: 'প্রশ্নমালা সম্পন্ন',
   doneText:
-    'এই সেশনের জন্য আপনার তথ্য নেওয়া হয়েছে। যোগ্যতা যাচাই এখনো চালু হয়নি। কোনো প্রতিষ্ঠান বা এজেন্সিতে তথ্য পাঠানো হয়নি।',
+    'আপনার প্রশ্নমালা সম্পন্ন হয়েছে। সম্পন্ন উত্তর রিফ্রেশ করা পর্যন্ত মেমোরিতে থাকে। কোনো তথ্য পাঠানো হয়নি এবং এই পর্যায়ে যোগ্যতার ফল দেখানো হচ্ছে না।',
   new: 'নতুন প্রশ্নমালা শুরু করুন',
   reset: 'মুছে আবার শুরু করুন',
   confirmReset: 'এই খসড়া মুছবেন?',

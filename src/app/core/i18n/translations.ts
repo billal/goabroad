@@ -1,6 +1,8 @@
-export const en = {
+﻿export const en = {
   home: 'Home',
   student: 'Student assessment',
+  jobSeeker: 'Job-seeker questionnaire',
+  jobAction: 'I want to work abroad',
   programs: 'Programs',
   program: 'Program details',
   institution: 'Institution details',
@@ -17,26 +19,27 @@ export const en = {
   closeMenu: 'Close menu',
   preview: 'Development preview',
   previewNotice:
-    'Development preview: the student questionnaire is available. Eligibility matching, listings, and comparison are not available yet.',
-  eyebrow: 'For students in Bangladesh',
-  headline: 'Your next chapter starts with understanding your options.',
+    'Explore our student and job-seeker questionnaires. Job listings and work-visa assessments are not available.',
+  eyebrow: 'For people in Bangladesh planning their next step',
+  headline: 'A bigger world. A clearer next step.',
   intro:
-    'Go Abroad is being built to help you explore overseas study, understand requirements, and make informed choices.',
+    'Turn your ambition to study or work abroad into a thoughtful plan. Start with your background, your interests, and where you want to go.',
   studentAction: 'I am a student',
   explore: 'Explore the program preview',
-  journey: 'A clearer path to overseas study',
+  journey: 'Start with a clearer picture of your goals',
   profileTitle: 'Start with your profile',
-  profileText: 'Describe your education and study preferences in the student questionnaire.',
-  optionsTitle: 'Understand your options',
-  optionsText: 'Program information will explain requirements and show what is known and unknown.',
+  profileText: 'Choose the student or job-seeker questionnaire for your goal.',
+  optionsTitle: 'Review your answers',
+  optionsText: 'Check your background and preferences before completing the questionnaire.',
   decisionTitle: 'Research with confidence',
-  decisionText: 'Compare details and consult official sources before deciding your next steps.',
+  decisionText: 'Consult official sources before deciding your next steps.',
   comingSoon: 'This section is being prepared.',
   placeholder:
     'This is a route preview, not a published listing or an assessment. No program, institution, visa, or agency information is available here yet.',
   missingText: 'We could not find this page. Check the address or return to the home page.',
   backHome: 'Back to home',
-  footer: 'Information to help you plan your studies abroad.',
+  footer:
+    'A thoughtful starting point for your study and work ambitions abroad. Made for people in Bangladesh.',
   disclaimer:
     'Go Abroad provides informational guidance only. Admission, scholarships, visas, and agency outcomes are never guaranteed.',
   loading: 'Loading page…',
@@ -54,6 +57,8 @@ export const isLanguage = (value: string | null | undefined): value is Language 
 export const bn: Translations = {
   home: 'হোম',
   student: 'শিক্ষার্থীর মূল্যায়ন',
+  jobSeeker: 'চাকরিপ্রার্থীর প্রশ্নমালা',
+  jobAction: 'আমি বিদেশে কাজ করতে চাই',
   programs: 'প্রোগ্রাম',
   program: 'প্রোগ্রামের বিস্তারিত',
   institution: 'শিক্ষাপ্রতিষ্ঠানের বিস্তারিত',
@@ -69,27 +74,27 @@ export const bn: Translations = {
   menu: 'মেনু',
   closeMenu: 'মেনু বন্ধ করুন',
   preview: 'উন্নয়নাধীন সংস্করণ',
-  previewNotice: 'উন্নয়নাধীন সংস্করণ: শিক্ষার্থীর প্রশ্নমালা চালু হয়েছে। যোগ্যতা যাচাই, তালিকা ও তুলনার সুবিধা এখনো চালু হয়নি।',
-  eyebrow: 'বাংলাদেশের শিক্ষার্থীদের জন্য',
-  headline: 'আপনার সম্ভাবনাগুলো জানার মধ্য দিয়েই শুরু হোক নতুন অধ্যায়।',
+  previewNotice:
+    'উন্নয়নাধীন সংস্করণ: শিক্ষার্থী বা চাকরিপ্রার্থীর প্রশ্নমালায় নিজের পটভূমি জানান। চাকরির তালিকা বা কর্মভিসার মূল্যায়ন চালু নেই।',
+  eyebrow: 'বাংলাদেশে যারা পরবর্তী পদক্ষেপের পরিকল্পনা করছেন',
+  headline: 'আরও বড় পৃথিবী। আরও স্পষ্ট পরবর্তী পদক্ষেপ।',
   intro:
-    'বিদেশে পড়াশোনার সুযোগ খুঁজতে, প্রয়োজনীয় শর্ত বুঝতে এবং জেনে সিদ্ধান্ত নিতে সহায়তা করার জন্য Go Abroad তৈরি করা হচ্ছে।',
+    'বিদেশে পড়াশোনা বা কাজের স্বপ্নকে ভেবেচিন্তে পরিকল্পনায় রূপ দিন। শুরু করুন আপনার পটভূমি, আগ্রহ ও গন্তব্য দিয়ে।',
   studentAction: 'আমি একজন শিক্ষার্থী',
   explore: 'প্রোগ্রাম বিভাগের প্রাথমিক সংস্করণ দেখুন',
-  journey: 'বিদেশে পড়াশোনার পথ হোক আরও স্পষ্ট',
+  journey: 'নিজের লক্ষ্য স্পষ্ট করে শুরু করুন',
   profileTitle: 'শুরু করুন নিজের তথ্য দিয়ে',
-  profileText: 'শিক্ষার্থীর প্রশ্নমালায় আপনার শিক্ষাগত তথ্য ও পড়াশোনার পছন্দগুলো জানান।',
-  optionsTitle: 'সুযোগগুলো বুঝে নিন',
-  optionsText: 'প্রোগ্রামের তথ্যে প্রয়োজনীয় শর্ত এবং কোন তথ্য জানা বা অজানা তা স্পষ্ট করা হবে।',
+  profileText: 'আপনার লক্ষ্য অনুযায়ী শিক্ষার্থী বা চাকরিপ্রার্থীর প্রশ্নমালা বেছে নিন।',
+  optionsTitle: 'উত্তরগুলো পর্যালোচনা করুন',
+  optionsText: 'প্রশ্নমালা সম্পন্ন করার আগে আপনার পটভূমি ও পছন্দ যাচাই করুন।',
   decisionTitle: 'জেনে সিদ্ধান্ত নিন',
-  decisionText:
-    'পরবর্তী পদক্ষেপ নেওয়ার আগে বিস্তারিত তুলনা করুন এবং সরকারি ও সংশ্লিষ্ট প্রতিষ্ঠানের সূত্র দেখুন।',
+  decisionText: 'পরবর্তী পদক্ষেপ নেওয়ার আগে সরকারি ও সংশ্লিষ্ট প্রতিষ্ঠানের সূত্র দেখুন।',
   comingSoon: 'এই বিভাগটি প্রস্তুত করা হচ্ছে।',
   placeholder:
     'এটি পৃষ্ঠার একটি প্রাথমিক সংস্করণ, প্রকাশিত তালিকা বা মূল্যায়ন নয়। এখানে এখনো প্রোগ্রাম, শিক্ষাপ্রতিষ্ঠান, ভিসা বা এজেন্সির তথ্য দেওয়া হয়নি।',
   missingText: 'এই পৃষ্ঠাটি খুঁজে পাওয়া যায়নি। ঠিকানাটি যাচাই করুন অথবা হোম পৃষ্ঠায় ফিরে যান।',
   backHome: 'হোমে ফিরে যান',
-  footer: 'বিদেশে পড়াশোনার পরিকল্পনায় সহায়ক তথ্য।',
+  footer: 'বিদেশে পড়াশোনা ও কাজের স্বপ্নের একটি চিন্তাশীল শুরু। বাংলাদেশের মানুষের জন্য।',
   disclaimer:
     'Go Abroad শুধু তথ্যভিত্তিক দিকনির্দেশনা দেয়। ভর্তি, বৃত্তি, ভিসা বা এজেন্সির সেবার ফলাফলের কোনো নিশ্চয়তা দেওয়া হয় না।',
   loading: 'পৃষ্ঠাটি লোড হচ্ছে…',
@@ -100,6 +105,7 @@ export const bn: Translations = {
 export type PageKey =
   | 'home'
   | 'student'
+  | 'jobSeeker'
   | 'programs'
   | 'program'
   | 'institution'

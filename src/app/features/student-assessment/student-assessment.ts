@@ -8,6 +8,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AssessmentSession } from '../../core/services/assessment-session';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { forkJoin } from 'rxjs';
 import { CatalogRecord } from '../../core/models/catalog';
@@ -44,6 +45,7 @@ import { assessmentBengali, assessmentEnglish, labels } from './assessment-text'
 export class StudentAssessment {
   readonly i18n = inject(LanguageService);
   readonly storage = inject(AssessmentStorage);
+  readonly session = inject(AssessmentSession);
   private readonly destroyRef = inject(DestroyRef);
   private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly heading = viewChild<ElementRef<HTMLElement>>('stepHeading');
@@ -70,6 +72,7 @@ export class StudentAssessment {
     return (steps[this.step()] ?? []).filter((field) => visible(field, this.form.getRawValue()));
   });
   constructor() {
+    this.session.clear();
     const saved = this.storage.load();
     if (saved) {
       this.form.setValue(saved.answers);
@@ -243,10 +246,12 @@ export class StudentAssessment {
       return;
     }
     this.completed.set(toProfile(this.form.getRawValue()));
+    this.session.set(this.completed()!);
     this.storage.clear();
     this.focus();
   }
   reset(): void {
+    this.session.clear();
     this.storage.clear();
     this.form.reset(undefined, { emitEvent: false });
     this.completed.set(null);

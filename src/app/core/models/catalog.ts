@@ -83,6 +83,9 @@ export interface GpaRequirement {
   readonly qualificationId: string | null;
 }
 export interface LanguageRequirement {
+  /** Missing legacy scale metadata remains unknown; never infer a test's scale. */
+  readonly overallScale?: number | null;
+  readonly componentScale?: number | null;
   readonly test: 'ielts' | 'toefl' | 'pte' | 'duolingo' | 'other';
   readonly testName: string;
   readonly minimumOverall: number | null;
@@ -124,6 +127,8 @@ export interface Program extends CatalogRecord {
   readonly requirements: ProgramRequirements;
   readonly requiredDocuments: Claim<readonly LocalizedText[]>;
   readonly scholarships: Claim<LocalizedText>;
+  /** Explicit availability only; descriptive scholarship text does not imply eligibility. */
+  readonly scholarshipAvailability?: Claim<boolean>;
   readonly officialApplicationUrl: string | null;
 }
 export interface CountryGuide extends CatalogRecord {

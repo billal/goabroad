@@ -1,0 +1,87 @@
+:host {
+  display: block;
+}
+section {
+  max-width: 65rem;
+  margin-inline: auto;
+}
+form,
+article {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  margin-block: 1.5rem;
+}
+.filters {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+.field {
+  min-width: 0;
+}
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+input,
+select {
+  width: 100%;
+  min-height: 3rem;
+  font: inherit;
+  padding: 0.5rem;
+  border: 1px solid var(--muted);
+  border-radius: 0.3rem;
+  background: white;
+  color: var(--ink);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.secondary {
+  background: white;
+  color: var(--green);
+}
+.notice {
+  padding: 1rem;
+  border-inline-start: 4px solid var(--green);
+  background: #edf4ed;
+}
+.failure,
+#filter-error {
+  color: #842a1d;
+}
+.failure {
+  border-inline-start: 3px solid #842a1d;
+  padding-inline-start: 0.75rem;
+}
+summary {
+  cursor: pointer;
+  padding-block: 0.75rem;
+  font-weight: 600;
+}
+.requirements {
+  padding-inline-start: 1.25rem;
+}
+.requirements li {
+  margin-block: 1rem;
+  padding-block: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+li,
+span {
+  overflow-wrap: anywhere;
+}
+.disclaimer {
+  font-size: 0.95rem;
+}
+@media (min-width: 42rem) {
+  .filters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

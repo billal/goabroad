@@ -1,0 +1,82 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.hero-art {
+  position: relative;
+  border-radius: 10rem 10rem 1.5rem 1.5rem;
+  background: radial-gradient(at 50% 40%, #2d6757, #123e32);
+  color: #fff9eb;
+  padding: 2rem 1.8rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 24px 60px -35px #174b3b80;
+}
+.art-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 2rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+}
+.world {
+  display: block;
+  width: 100%;
+  margin: -0.6rem auto -1.8rem;
+}
+.art-caption {
+  text-align: center;
+  padding-bottom: 2rem;
+}
+.art-caption p {
+  color: #d5d9be;
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+}
+.art-caption h2 {
+  font-family: Georgia, 'Nirmala UI', serif;
+  font-weight: 400;
+  font-size: 1.65rem;
+  max-width: 16rem;
+  margin: 0.6rem auto;
+}
+.art-note {
+  position: absolute;
+  bottom: -1.5rem;
+  inset-inline: 8%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: #fffefa;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 12px 30px #163e3210;
+  font-size: 0.85rem;
+}
+.art-note > app-icon {
+  margin-left: auto;
+  width: 1.1rem;
+}
+.icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  background: #e4eee7;
+  color: var(--green);
+  border-radius: 0.8rem;
+  flex-shrink: 0;
+}
+.art-note .icon-tile {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+@media (max-width: 30rem) {
+  .art-top {
+    padding-inline: 1rem;
+  }
+}

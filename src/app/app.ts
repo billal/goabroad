@@ -30,9 +30,7 @@ export class App {
   readonly navigation = [
     { path: '', key: 'home' },
     { path: 'student', key: 'student' },
-    { path: 'programs', key: 'programs' },
-    { path: 'agencies', key: 'agencies' },
-    { path: 'compare', key: 'compare' },
+    { path: 'job-seeker', key: 'jobSeeker' },
   ] as const;
   constructor() {
     this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {

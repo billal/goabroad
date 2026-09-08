@@ -68,3 +68,21 @@ Run `npm test -- --watch=false` to validate actual shipped JSON plus malformed-d
 nested-contract, relationship, and repository cases. Run `npm run build` for the
 production TypeScript/template check. Test-only JSON imports are excluded from the
 application compilation; production access uses HttpClient.
+
+## Language score scales
+
+Language requirements may include `overallScale` and `componentScale`. These are
+positive numeric maxima, supplied from reviewed source information. Missing or
+null values decode to unknown for compatibility with existing snapshots; no test
+scale is inferred. A supplied threshold cannot exceed its corresponding scale.
+The matching engine compares only equal scales. Null thresholds remain unknown,
+not confirmed exemptions. These optional fields do not change existing JSON data.
+
+## Scholarship availability and public search
+
+Programs may include `scholarshipAvailability: { value: true | false | null,
+sourceIds: [...] }`. Omitted fields decode to an unknown claim for compatibility.
+Known published claims require sources. Scholarship descriptions never imply
+availability or personal eligibility. Search excludes draft/archived/development
+programs and programs whose institution is not published or is a development
+sample. Current public program and institution collections remain empty.

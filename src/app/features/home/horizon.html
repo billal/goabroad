@@ -1,0 +1,55 @@
+<div class="hero-art">
+  <div class="art-top"><span>GO ABROAD /</span><app-icon name="compass" /></div>
+  <svg class="world" viewBox="0 0 460 420" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="sphere" cx="32%" cy="28%" r="80%">
+        <stop stop-color="#f0f1cd" />
+        <stop offset=".6" stop-color="#b5cbb5" />
+        <stop offset="1" stop-color="#6a9e8b" />
+      </radialGradient>
+      <clipPath id="world-clip"><circle cx="230" cy="210" r="146" /></clipPath>
+    </defs>
+    <circle cx="230" cy="210" r="183" fill="none" stroke="#ffffff" stroke-opacity=".13" />
+    <circle cx="230" cy="210" r="202" fill="none" stroke="#ffffff" stroke-opacity=".08" />
+    <circle cx="230" cy="210" r="146" fill="url(#sphere)" />
+    <g clip-path="url(#world-clip)" fill="none" stroke="#296352" stroke-opacity=".25">
+      <ellipse cx="230" cy="210" rx="96" ry="146" />
+      <ellipse cx="230" cy="210" rx="40" ry="146" />
+      <ellipse cx="230" cy="210" rx="146" ry="58" />
+      <ellipse cx="230" cy="210" rx="146" ry="111" />
+      <path d="M84 210h292M230 64v292" />
+    </g>
+    <g clip-path="url(#world-clip)" fill="#2c705b" opacity=".8">
+      <path
+        d="m90 151 35-39 42-14 18 12 27-7 10 20-22 16-7 21-25 6-8 29-21 9-11-19-25-9Zm72 68 27 7 15 24 26 10-5 31-17 19-8 27-15-7-5-30-16-24-13-28Z"
+      />
+      <path
+        d="m250 111 28-13 35 9 7 16 36 10 33 39-6 18-27-7-19 21-17-9-9 19-24-12-11-23-19 4-14-22-13-9Zm-1 81 28 6 19 23-5 28-20 29-14-8-7-31-14-21Zm78 87 21-13 30 12 9 23-28 11-30-11Z"
+      />
+    </g>
+    <path
+      d="M55 260C83 124 291 51 399 159"
+      fill="none"
+      stroke="#e9c77d"
+      stroke-width="2"
+      stroke-dasharray="5 7"
+    />
+    <circle cx="121" cy="158" r="7" fill="#fff9e8" />
+    <circle cx="121" cy="158" r="14" fill="none" stroke="#fff9e8" stroke-opacity=".5" />
+    <g transform="translate(390 146) rotate(32)">
+      <path
+        d="m0-16 5 12 14 7v4L4 4l-1 10 5 4v3l-8-3-8 3v-3l5-4-1-10-15 3V3l14-7Z"
+        fill="#f6d998"
+      />
+    </g>
+    <path d="m55 78 0 18m-9-9h18m344 213v14m-7-7h14" stroke="#e9c77d" stroke-width="2" />
+  </svg>
+  <div class="art-caption">
+    <p>{{ text().graphicCaption }}</p>
+    <h2>{{ text().graphicTitle }}</h2>
+  </div>
+  <div class="art-note">
+    <span class="icon-tile"><app-icon name="compass" /></span><span>{{ text().graphicNote }}</span
+    ><app-icon name="arrow" />
+  </div>
+</div>

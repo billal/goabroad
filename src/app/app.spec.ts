@@ -11,6 +11,9 @@ import {
   EducationLevelRepository,
   DegreeLevelRepository,
   SubjectRepository,
+  ProgramRepository,
+  InstitutionRepository,
+  CityRepository,
 } from './core/repositories/repositories';
 import { validateCatalog } from './core/models/catalog-validation';
 import { sampleCatalog } from './core/models/sample-catalog.spec-helper';
@@ -21,6 +24,18 @@ describe('Milestone 2 shell and routes', () => {
       imports: [App],
       providers: [
         ...appConfig.providers,
+        {
+          provide: ProgramRepository,
+          useValue: { list: () => of(validateCatalog(sampleCatalog).programs) },
+        },
+        {
+          provide: InstitutionRepository,
+          useValue: { list: () => of(validateCatalog(sampleCatalog).institutions) },
+        },
+        {
+          provide: CityRepository,
+          useValue: { list: () => of(validateCatalog(sampleCatalog).cities) },
+        },
         {
           provide: CountryRepository,
           useValue: { list: () => of(validateCatalog(sampleCatalog).countries) },
@@ -70,14 +85,15 @@ describe('Milestone 2 shell and routes', () => {
     const cases = [
       ['', 'home'],
       ['student', 'student'],
-      ['programs', 'programs'],
-      ['programs/example', 'program'],
+      ['job-seeker', 'jobSeeker'],
+      ['programs', 'notFound'],
+      ['programs/example', 'notFound'],
       ['institutions/example', 'institution'],
       ['countries/example', 'country'],
       ['countries/example/visa', 'visa'],
-      ['agencies', 'agencies'],
-      ['agencies/example', 'agency'],
-      ['compare', 'compare'],
+      ['agencies', 'notFound'],
+      ['agencies/example', 'notFound'],
+      ['compare', 'notFound'],
     ] as const;
     const text = lang === 'bn' ? bn : en;
     for (const [path, key] of cases) {
@@ -101,7 +117,7 @@ describe('Milestone 2 shell and routes', () => {
     expect(router.url).toBe('/bn/programs/example?country=CA&subject=engineering#main-content');
     expect(language.text()).toBe(bn);
     expect((fixture.nativeElement as HTMLElement).querySelector('h1')?.textContent).toBe(
-      bn.program,
+      bn.notFound,
     );
     await router.navigateByUrl(language.urlFor('en'));
     expect(language.text()).toBe(en);
@@ -126,12 +142,12 @@ describe('Milestone 2 shell and routes', () => {
     fixture.detectChanges();
     expect(button.getAttribute('aria-expanded')).toBe('false');
     button.click();
-    await TestBed.inject(Router).navigateByUrl('/en/programs');
+    await TestBed.inject(Router).navigateByUrl('/en/student');
     await fixture.whenStable();
     fixture.detectChanges();
     expect(button.getAttribute('aria-expanded')).toBe('false');
     expect(element.querySelector('.navigation a[aria-current="page"]')?.textContent).toContain(
-      en.programs,
+      en.student,
     );
   });
 
@@ -160,4 +176,36 @@ describe('Milestone 2 shell and routes', () => {
     expect(Object.keys(bn).sort()).toEqual(Object.keys(en).sort());
     expect(Object.values(bn).every((value) => value.trim().length > 0)).toBe(true);
   });
+  it.each(['en', 'bn'])('keeps redesigned homepage actions on the %s route', async (lang) => {
+    const fixture = await open('/' + lang);
+    const element = fixture.nativeElement as HTMLElement;
+    const callsToAction = element.querySelectorAll<HTMLAnchorElement>('a[fragment="pathways"]');
+    expect(callsToAction.length).toBe(2);
+    for (const link of callsToAction) {
+      expect(link.getAttribute('href')).toBe('/' + lang + '#pathways');
+    }
+    expect(element.querySelector('#pathways')).not.toBeNull();
+    expect(element.querySelector('.path-card a')?.getAttribute('href')).toBe(
+      '/' + lang + '/student',
+    );
+    expect(element.querySelector('.path-card.work a')?.getAttribute('href')).toBe(
+      '/' + lang + '/job-seeker',
+    );
+    expect(element.querySelectorAll('h1').length).toBe(1);
+  });
+  it.each(['en', 'bn'])(
+    'shows Home and both questionnaire links in %s navigation',
+    async (lang) => {
+      const fixture = await open('/' + lang);
+      const element = fixture.nativeElement as HTMLElement;
+      expect(
+        Array.from(element.querySelectorAll('.navigation a')).map((link) =>
+          link.getAttribute('href'),
+        ),
+      ).toEqual(['/' + lang, '/' + lang + '/student', '/' + lang + '/job-seeker']);
+      expect(
+        element.querySelector('a[href*="programs"], a[href*="agencies"], a[href*="compare"]'),
+      ).toBeNull();
+    },
+  );
 });
