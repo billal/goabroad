@@ -1,0 +1,31 @@
+<section class="hero" aria-labelledby="home-heading">
+  <p class="eyebrow">{{ i18n.text().eyebrow }}</p>
+  <h1 id="home-heading">{{ i18n.text().headline }}</h1>
+  <p class="intro">{{ i18n.text().intro }}</p>
+  <div class="actions">
+    <a class="button" [routerLink]="['/', i18n.language(), 'student']"
+      >{{ i18n.text().studentAction }} <span aria-hidden="true">↗</span></a
+    >
+    <a [routerLink]="['/', i18n.language(), 'programs']">{{ i18n.text().explore }}</a>
+  </div>
+</section>
+<section class="journey" aria-labelledby="journey-heading">
+  <h2 id="journey-heading">{{ i18n.text().journey }}</h2>
+  <div class="cards">
+    <article>
+      <span class="step" aria-hidden="true">01</span>
+      <h3>{{ i18n.text().profileTitle }}</h3>
+      <p>{{ i18n.text().profileText }}</p>
+    </article>
+    <article>
+      <span class="step" aria-hidden="true">02</span>
+      <h3>{{ i18n.text().optionsTitle }}</h3>
+      <p>{{ i18n.text().optionsText }}</p>
+    </article>
+    <article>
+      <span class="step" aria-hidden="true">03</span>
+      <h3>{{ i18n.text().decisionTitle }}</h3>
+      <p>{{ i18n.text().decisionText }}</p>
+    </article>
+  </div>
+</section>

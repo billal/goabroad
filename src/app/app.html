@@ -1,0 +1,75 @@
+<a class="skip-link" href="#main-content">{{ i18n.text().skip }}</a>
+<header (keydown.escape)="closeMenu()">
+  <div class="header-inner container">
+    <a class="brand" [routerLink]="['/', i18n.language()]" aria-label="Go Abroad"
+      ><span class="brand-mark" aria-hidden="true">↗</span> Go Abroad</a
+    >
+    <nav class="languages" [attr.aria-label]="i18n.text().language">
+      <a
+        [routerLink]="i18n.urlFor('en')"
+        lang="en"
+        hreflang="en"
+        [attr.aria-current]="i18n.language() === 'en' ? 'true' : null"
+        >English</a
+      >
+      <a
+        [routerLink]="i18n.urlFor('bn')"
+        lang="bn"
+        hreflang="bn"
+        [attr.aria-current]="i18n.language() === 'bn' ? 'true' : null"
+        >বাংলা</a
+      >
+    </nav>
+    <button
+      #menuButton
+      class="menu-toggle"
+      type="button"
+      aria-controls="main-navigation"
+      [attr.aria-expanded]="menuOpen()"
+      (click)="menuOpen.set(!menuOpen())"
+    >
+      {{ menuOpen() ? i18n.text().closeMenu : i18n.text().menu }}
+    </button>
+    <nav
+      id="main-navigation"
+      class="navigation"
+      [class.open]="menuOpen()"
+      [attr.aria-label]="i18n.text().navigation"
+    >
+      @for (item of navigation; track item.key) {
+        <a
+          [routerLink]="item.path ? ['/', i18n.language(), item.path] : ['/', i18n.language()]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: item.path === '' }"
+          ariaCurrentWhenActive="page"
+          >{{ i18n.text()[item.key] }}</a
+        >
+      }
+    </nav>
+  </div>
+</header>
+<div class="preview-banner">
+  <div class="container">
+    <strong>{{ i18n.text().preview }}</strong
+    ><span>{{ i18n.text().previewNotice }}</span>
+  </div>
+</div>
+<main #main id="main-content" class="container" tabindex="-1" [attr.aria-busy]="loading()">
+  @if (loading()) {
+    <p role="status">{{ i18n.text().loading }}</p>
+  }
+  @if (failedUrl()) {
+    <div role="alert">
+      <p>{{ i18n.text().navigationError }}</p>
+      <button type="button" (click)="retry()">{{ i18n.text().retry }}</button>
+    </div>
+  }
+  <router-outlet />
+</main>
+<footer>
+  <div class="container">
+    <strong>Go Abroad</strong>
+    <p>{{ i18n.text().footer }}</p>
+    <p class="disclaimer">{{ i18n.text().disclaimer }}</p>
+  </div>
+</footer>

@@ -1,0 +1,74 @@
+:root {
+  --ink: #172d29;
+  --muted: #4d605b;
+  --green: #205d49;
+  --border: #d7e1db;
+}
+html {
+  box-sizing: border-box;
+  font-family: system-ui, 'Nirmala UI', 'Vrinda', sans-serif;
+  line-height: 1.6;
+  color: var(--ink);
+  background: #f8faf7;
+}
+html[lang='bn'] {
+  line-height: 1.8;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+}
+.container {
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+h1,
+h2,
+h3,
+p,
+a {
+  overflow-wrap: anywhere;
+}
+a {
+  color: var(--green);
+  text-underline-offset: 0.25em;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+button,
+.button {
+  font: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: 1px solid var(--green);
+  border-radius: 0.4rem;
+  padding: 0.7rem 1.1rem;
+  background: var(--green);
+  color: white;
+  text-decoration: none;
+}
+:focus-visible {
+  outline: 3px solid #a34b13;
+  outline-offset: 4px;
+}
+.eyebrow {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}

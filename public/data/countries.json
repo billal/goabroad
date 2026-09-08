@@ -1,0 +1,41 @@
+{
+  "data": [
+    {
+      "id": "country-bd",
+      "slug": "country-bd",
+      "name": {
+        "en": "Bangladesh",
+        "bn": "বাংলাদেশ"
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "unverified",
+      "lastCheckedAt": null,
+      "updatedAt": "2026-09-08T00:00:00Z",
+      "isDevelopmentSample": true,
+      "sources": [
+        {
+          "id": "iso-bd",
+          "title": "ISO Online Browsing Platform — Bangladesh (source awaiting manual review)",
+          "url": "https://www.iso.org/obp/ui/#iso:code:3166:BD",
+          "checkedAt": null
+        }
+      ],
+      "isoCode": "BD"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "pageSize": 20,
+    "totalItems": 1,
+    "totalPages": 1
+  },
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2026-09-08T00:00:00Z",
+    "isDevelopmentSample": true,
+    "notice": {
+      "en": "Development sample only. Not verified information; do not use for admission or visa decisions.",
+      "bn": "শুধু উন্নয়নের নমুনা। যাচাইকৃত তথ্য নয়; ভর্তি বা ভিসার সিদ্ধান্তে ব্যবহার করবেন না।"
+    }
+  }
+}

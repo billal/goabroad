@@ -1,0 +1,148 @@
+<section aria-labelledby="assessment-heading">
+  <p class="eyebrow">{{ i18n.text().preview }}</p>
+  <h1 id="assessment-heading">{{ i18n.text().student }}</h1>
+  <p>{{ text().intro }}</p>
+  <p class="notice">{{ text().privacy }}</p>
+  @if (storage.unavailable()) {
+    <p role="status" class="notice">{{ text().storage }}</p>
+  }
+  @if (loading()) {
+    <p role="status">{{ text().loading }}</p>
+  } @else if (loadError()) {
+    <div role="alert">
+      <p>{{ text().loadError }}</p>
+      <button type="button" (click)="load()">{{ text().retry }}</button>
+    </div>
+  } @else if (completed()) {
+    <h2 #stepHeading tabindex="-1">{{ text().done }}</h2>
+    <p role="status">{{ text().doneText }}</p>
+    <button type="button" (click)="reset()">{{ text().new }}</button>
+  } @else {
+    <p class="notice">{{ text().sample }}</p>
+    @if (resumed()) {
+      <p role="status">{{ text().resumed }}</p>
+    }
+    <p class="progress-text">{{ text().step }} {{ step() + 1 }} {{ text().of }} 5</p>
+    <ol class="steps">
+      @for (title of text().steps; track $index) {
+        <li
+          [class.current]="step() === $index"
+          [attr.aria-current]="step() === $index ? 'step' : null"
+        >
+          {{ title }}
+        </li>
+      }
+    </ol>
+    <h2 #stepHeading tabindex="-1">{{ text().steps[step()] }}</h2>
+    @if (step() === 4) {
+      @for (group of steps; track $index; let groupIndex = $index) {
+        <section class="review-group" [attr.aria-label]="text().steps[groupIndex]">
+          <div class="review-title">
+            <h3>{{ text().steps[groupIndex] }}</h3>
+            <button
+              type="button"
+              class="secondary"
+              (click)="go(groupIndex)"
+              [attr.aria-label]="text().edit + ' ' + text().steps[groupIndex]"
+            >
+              {{ text().edit }}
+            </button>
+          </div>
+          <dl>
+            @for (field of reviewFields(groupIndex); track field) {
+              <div>
+                <dt>{{ label(field) }}</dt>
+                <dd>{{ answer(field) }}</dd>
+              </div>
+            }
+          </dl>
+        </section>
+      }
+      <div class="actions">
+        <button type="button" class="secondary" (click)="go(3)">{{ text().back }}</button
+        ><button type="button" (click)="finish()">{{ text().finish }}</button>
+      </div>
+    } @else {
+      @if (step() === 1) {
+        <p id="step-hint">{{ text().academicHint }}</p>
+      }
+      @if (step() === 2) {
+        <p id="step-hint">{{ text().scoreHint }}</p>
+      }
+      @if (step() === 3) {
+        <p id="step-hint">{{ text().preferencesHint }}</p>
+        <p>{{ text().intakeHint }}</p>
+      }
+      <form [formGroup]="form" (ngSubmit)="next()" novalidate>
+        @if (attempted() && form.invalid) {
+          <p class="error" role="alert">{{ text().validation }}</p>
+        }
+        <div class="fields">
+          @for (field of fields(); track field) {
+            <div class="field">
+              <label [for]="field"
+                >{{ label(field) }}
+                @if (optional(field)) {
+                  <span>({{ text().optional }})</span>
+                }
+              </label>
+              @if (options(field); as choices) {
+                <select
+                  [id]="field"
+                  [formControlName]="field"
+                  [attr.aria-required]="!optional(field)"
+                  [attr.aria-invalid]="error(field) ? 'true' : null"
+                  [attr.aria-describedby]="error(field) ? field + '-error' : null"
+                >
+                  <option value="">{{ text().select }}</option>
+                  @for (option of choices; track option.value) {
+                    <option [value]="option.value">{{ option.label }}</option>
+                  }
+                </select>
+                @if (choices.length === 1) {
+                  <small>{{ text().empty }}</small>
+                }
+              } @else {
+                <input
+                  [id]="field"
+                  type="text"
+                  [attr.inputmode]="numeric(field) ? 'decimal' : 'text'"
+                  [formControlName]="field"
+                  maxlength="500"
+                  [attr.aria-required]="!optional(field)"
+                  autocomplete="off"
+                  [attr.aria-invalid]="error(field) ? 'true' : null"
+                  [attr.aria-describedby]="error(field) ? field + '-error' : null"
+                />
+              }
+              @if (error(field); as message) {
+                <p class="error" [id]="field + '-error'">{{ message }}</p>
+              }
+            </div>
+          }
+        </div>
+        <div class="actions">
+          @if (step() > 0) {
+            <button type="button" class="secondary" (click)="go(step() - 1)">
+              {{ text().back }}
+            </button>
+          }
+          <button type="submit">{{ step() === 3 ? text().review : text().next }}</button>
+        </div>
+      </form>
+    }
+    <div class="reset">
+      @if (confirmingReset()) {
+        <p>{{ text().confirmReset }}</p>
+        <button type="button" class="secondary" (click)="reset()">{{ text().reset }}</button>
+        <button type="button" class="secondary" (click)="confirmingReset.set(false)">
+          {{ text().cancel }}
+        </button>
+      } @else {
+        <button type="button" class="secondary" (click)="confirmingReset.set(true)">
+          {{ text().reset }}
+        </button>
+      }
+    </div>
+  }
+</section>

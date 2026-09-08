@@ -1,0 +1,30 @@
+import { AssessmentDraft, createAssessmentForm } from './assessment-form';
+export function validAnswers(): AssessmentDraft {
+  return {
+    ...createAssessmentForm().getRawValue(),
+    nationality: 'other',
+    nationalityOther: 'Bangladesh',
+    residence: 'other',
+    residenceOther: 'Bangladesh',
+    education: 'other',
+    educationOther: 'Bachelor',
+    background: 'other',
+    backgroundOther: 'Mathematics',
+    resultKnown: 'yes',
+    gpa: '3.5',
+    gpaScale: '4',
+    graduationYear: String(new Date().getUTCFullYear() - 2),
+    studyGapYears: '1',
+    workMonths: '0',
+    test: 'none',
+    destination: 'other',
+    destinationOther: 'Canada, Australia',
+    degree: 'other',
+    degreeOther: 'Master',
+    subjects: 'Mathematics',
+    budget: '20000',
+    currency: 'USD',
+    intake: new Date().toISOString().slice(0, 7),
+    scholarship: 'no',
+  };
+}

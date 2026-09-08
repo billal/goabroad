@@ -1,0 +1,18 @@
+{
+  "data": [],
+  "pagination": {
+    "page": 1,
+    "pageSize": 20,
+    "totalItems": 0,
+    "totalPages": 0
+  },
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2026-09-08T00:00:00Z",
+    "isDevelopmentSample": true,
+    "notice": {
+      "en": "Development sample only. Not verified information; do not use for admission or visa decisions.",
+      "bn": "শুধু উন্নয়নের নমুনা। যাচাইকৃত তথ্য নয়; ভর্তি বা ভিসার সিদ্ধান্তে ব্যবহার করবেন না।"
+    }
+  }
+}

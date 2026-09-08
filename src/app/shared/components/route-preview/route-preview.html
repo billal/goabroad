@@ -1,0 +1,11 @@
+<section aria-labelledby="page-heading">
+  <p class="eyebrow">{{ i18n.text().preview }}</p>
+  <h1 id="page-heading">{{ i18n.text()[page()] }}</h1>
+  @if (page() === 'notFound') {
+    <p>{{ i18n.text().missingText }}</p>
+  } @else {
+    <h2>{{ i18n.text().comingSoon }}</h2>
+    <p>{{ i18n.text().placeholder }}</p>
+  }
+  <a class="button" [routerLink]="['/', i18n.language()]">{{ i18n.text().backHome }}</a>
+</section>
