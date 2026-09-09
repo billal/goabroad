@@ -58,17 +58,19 @@ p {
   font-size: 0.88rem;
 }
 dialog {
-  width: min(28rem, calc(100% - 2rem));
+  width: min(32rem, calc(100% - 2rem));
   max-height: calc(100dvh - 2rem);
   overflow: auto;
-  padding: 1.5rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
   border: 1px solid var(--border);
   border-radius: 1rem;
-  color: var(--green);
+  color: var(--ink);
   background: #fffefa;
+  box-shadow: 0 24px 80px #08251f40;
 }
 dialog::backdrop {
   background: #132d27a6;
+  backdrop-filter: blur(4px);
 }
 .dialog-heading {
   display: flex;
@@ -77,14 +79,34 @@ dialog::backdrop {
   justify-content: space-between;
 }
 .dialog-heading h2 {
-  font-size: 1.5rem;
+  font-size: clamp(1.35rem, 4vw, 1.7rem);
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+  max-width: 20rem;
   margin: 0;
 }
 .close {
-  padding: 0.2rem 0.7rem;
-  background: transparent;
+  display: grid;
+  place-items: center;
+  flex: 0 0 2.75rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  min-height: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: #edf3eb;
   color: var(--green);
   font-size: 1.5rem;
+  line-height: 1;
+}
+.close:hover { background: #dfeadd; }
+#save-notice {
+  margin: 1.25rem 0 1.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.6rem;
+  background: #f0f4ed;
+  line-height: 1.65;
 }
 form {
   display: grid;
@@ -94,11 +116,27 @@ input {
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  margin-bottom: 0.6rem;
+  min-height: 3.1rem;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #aabbb2;
+  border-radius: 0.55rem;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  line-height: 1.4;
+}
+input:focus-visible {
+  border-color: var(--green);
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
 }
 label {
   font-size: 0.9rem;
+  font-weight: 600;
 }
 form button {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
+  min-height: 3.25rem;
+  border-radius: 0.55rem;
 }
