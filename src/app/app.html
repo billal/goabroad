@@ -1,9 +1,7 @@
 <a class="skip-link" href="#main-content">{{ i18n.text().skip }}</a>
 <header (keydown.escape)="closeMenu()">
   <div class="header-inner container">
-    <a class="brand" [routerLink]="['/', i18n.language()]" aria-label="Go Abroad"
-      ><span class="brand-mark" aria-hidden="true">↗</span> Go Abroad</a
-    >
+    <a class="brand" [routerLink]="['/', i18n.language()]" aria-label="Go Abroad"><app-brand /></a>
     <nav class="languages" [attr.aria-label]="i18n.text().language">
       <a
         [routerLink]="i18n.urlFor('en')"
@@ -48,11 +46,8 @@
     </nav>
   </div>
 </header>
-<div class="preview-banner">
-  <div class="container">
-    <strong>{{ i18n.text().preview }}</strong
-    ><span>{{ i18n.text().previewNotice }}</span>
-  </div>
+<div class="guidance-banner">
+  <p class="container"><strong>Go Abroad</strong> {{ i18n.text().guidanceBody }}</p>
 </div>
 <main #main id="main-content" class="container" tabindex="-1" [attr.aria-busy]="loading()">
   @if (loading()) {
@@ -69,18 +64,19 @@
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div>
+      <div class="footer-brand">
         <a class="brand" [routerLink]="['/', i18n.language()]" aria-label="Go Abroad"
-          ><span class="brand-mark" aria-hidden="true">↗</span>Go Abroad</a
-        >
+          ><app-brand
+        /></a>
+        <h2>{{ i18n.text().journey }}</h2>
         <p>{{ i18n.text().footer }}</p>
       </div>
       <nav class="footer-links" [attr.aria-label]="i18n.text().navigation">
-        <strong>{{ i18n.text().journey }}</strong>
+        <strong>{{ i18n.text().navigation }}</strong>
         @for (item of navigation; track item.key) {
-          <a
-            [routerLink]="item.path ? ['/', i18n.language(), item.path] : ['/', i18n.language()]"
-            >{{ i18n.text()[item.key] }}</a
+          <a [routerLink]="item.path ? ['/', i18n.language(), item.path] : ['/', i18n.language()]"
+            ><span>{{ i18n.text()[item.key] }}</span
+            ><span aria-hidden="true">↗</span></a
           >
         }
       </nav>

@@ -89,6 +89,18 @@ const intake = D.object<M.Intake>({
 });
 const program = D.object<M.Program>({
   ...base,
+  research: (value, path) =>
+    value === undefined
+      ? undefined
+      : D.object({
+          kind: D.oneOf('official-source-pilot'),
+          academic: claim(localized),
+          language: claim(localized),
+          intake: claim(localized),
+          fees: claim(localized),
+          tuitionAcademicYear: D.nullable(D.pattern(/^\d{4}-\d{4}$/)),
+          tuitionNationalityCode: D.nullable(D.pattern(/^[A-Z]{2}$/)),
+        })(value, path),
   institutionId: D.id,
   countryId: D.id,
   cityId: D.nullable(D.id),

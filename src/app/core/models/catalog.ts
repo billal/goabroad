@@ -112,6 +112,16 @@ export interface Intake {
   readonly deadline: string | null;
 }
 export interface Program extends CatalogRecord {
+  /** Limited research notes are not automatically executable admission rules. */
+  readonly research?: {
+    readonly kind: 'official-source-pilot';
+    readonly academic: Claim<LocalizedText>;
+    readonly language: Claim<LocalizedText>;
+    readonly intake: Claim<LocalizedText>;
+    readonly fees: Claim<LocalizedText>;
+    readonly tuitionAcademicYear: string | null;
+    readonly tuitionNationalityCode: string | null;
+  };
   readonly institutionId: string;
   readonly countryId: string;
   readonly cityId: string | null;

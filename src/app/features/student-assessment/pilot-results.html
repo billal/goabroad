@@ -1,0 +1,104 @@
+﻿<section [attr.aria-label]="t('title')">
+  <div class="result-context">
+    <span class="sample-label">{{ t('sampleLabel') }}</span>
+    <p>{{ t('resultIntro') }} {{ t('selection') }}</p>
+    <p>{{ t('limited') }}</p>
+  </div>
+  @if (loading()) {
+    <p role="status">{{ i18n.text().loading }}</p>
+  } @else if (error()) {
+    <div role="alert">
+      <p>{{ i18n.text().navigationError }}</p>
+      <button type="button" (click)="load()">{{ i18n.text().retry }}</button>
+    </div>
+  } @else {
+    <div class="result-tools">
+      <p role="status">{{ t('found') }}: {{ number(rows().length) }}</p>
+      <div class="country-filter">
+        <label for="result-country">{{ t('destination') }}</label>
+        <select id="result-country" [formControl]="destination">
+          <option value="">{{ submittedDestinationName() }}</option>
+          @for (option of destinationOptions(); track option.id) {
+            <option [value]="option.id">{{ name(option.name) }}</option>
+          }
+        </select>
+      </div>
+    </div>
+    @if (!rows().length) {
+      <p>{{ data()?.programs?.length ? t('empty') : t('noData') }}</p>
+    }
+    <div class="result-list">
+      @for (row of rows(); track row.program.id) {
+        <article class="result-card">
+          <div class="card-heading">
+            <span class="institution-icon"><app-icon name="study" /></span>
+            <div class="card-title">
+              <p class="institution">{{ institution(row.program.institutionId) }}</p>
+              <h3>{{ name(row.program.name) }}</h3>
+              <span class="location"
+                ><app-icon name="globe" />{{ country(row.program.countryId) }}</span
+              >
+            </div>
+            <span class="badge">{{ s(row.program.verificationStatus) }}</span>
+          </div>
+          <dl class="facts">
+            <div>
+              <dt>{{ t('duration') }}</dt>
+              <dd>
+                {{
+                  row.program.durationMonths.value === null
+                    ? s('unknown')
+                    : number(row.program.durationMonths.value!)
+                }}
+              </dd>
+            </div>
+            <div>
+              <dt>{{ s('tuition') }}</dt>
+              <dd>{{ money(row.program) }}</dd>
+            </div>
+          </dl>
+          <p class="checked">{{ name(row.program.research?.fees?.value) }}</p>
+          <p class="checked">
+            {{ s('lastChecked') }}: {{ row.program.lastCheckedAt | date: 'yyyy-MM-dd' : 'UTC' }}
+          </p>
+          <details>
+            <summary>{{ t('detail') }}</summary>
+            @for (key of notes; track key) {
+              <div class="research-note">
+                <h4>{{ t(key) }}</h4>
+                <p>{{ name(row.program.research?.[key]?.value) }}</p>
+                @for (source of row.program.sources; track source.id) {
+                  @if (row.program.research?.[key]?.sourceIds?.includes(source.id)) {
+                    <a [href]="source.url" target="_blank" rel="noopener noreferrer">{{
+                      source.title
+                    }}</a>
+                  }
+                }
+              </div>
+            }
+            <dl class="facts">
+              <div>
+                <dt>{{ s('scholarship') }}</dt>
+                <dd>
+                  {{
+                    row.program.scholarships.value
+                      ? name(row.program.scholarships.value)
+                      : s('unknown')
+                  }}
+                </dd>
+              </div>
+            </dl>
+          </details>
+          <a
+            class="official-link"
+            [href]="row.program.officialApplicationUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ t('official') }} <span aria-hidden="true">↗</span></a
+          >
+        </article>
+      }
+    </div>
+  }
+  <p class="pilot-disclaimer">{{ s('disclaimer') }}</p>
+</section>

@@ -2,7 +2,7 @@ import { validateCatalog } from './catalog-validation';
 import { sampleCatalog } from './sample-catalog.spec-helper';
 import { DataValidationError, timestamp, url, number } from './decoder';
 
-describe('Shipped JSON catalog', () => {
+describe('Minimal catalog fixtures', () => {
   it('validates every sample file with consistent envelopes and relationships', () => {
     const catalog = validateCatalog(sampleCatalog);
     expect(catalog.countries.data[0].isoCode).toBe('BD');

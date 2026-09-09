@@ -1,0 +1,247 @@
+﻿:host {
+  display: block;
+  margin-top: 0.5rem;
+}
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+p {
+  color: var(--muted);
+}
+.pilot-notice,
+.pilot-disclaimer {
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  background: #f1f4e9;
+  border: 1px solid var(--border);
+}
+.pilot-disclaimer {
+  border-inline-start: 3px solid var(--green);
+}
+.result-tools,
+.result-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.result-tools {
+  margin: 1.5rem 0;
+}
+.result-context > p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+.country-filter {
+  display: grid;
+  gap: 0.35rem;
+  max-width: 100%;
+}
+.country-filter label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.country-filter select {
+  width: 100%;
+  min-width: 0;
+  padding: 0.7rem 2rem 0.7rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: white;
+  color: var(--green);
+  font: inherit;
+}
+.secondary {
+  color: var(--green);
+  background: white;
+}
+.result-list {
+  display: grid;
+  gap: 1.5rem;
+}
+.result-card {
+  min-width: 0;
+  padding: clamp(1.1rem, 3vw, 2rem);
+  box-shadow: 0 8px 24px #193d3206;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: white;
+}
+.result-top {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+h3 {
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+  margin: 0.3rem 0 0.65rem;
+}
+.institution {
+  margin: 0;
+  font-size: 0.85rem;
+}
+.facts {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 1.25rem;
+  margin: 1.5rem 0 1rem;
+  padding: 1rem 1.25rem;
+  background: #f5f7f2;
+  border-radius: 0.6rem;
+}
+dt,
+.checked {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+dd {
+  margin: 0.25rem 0 0;
+  font-weight: 600;
+}
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid #d4dacc;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  background: #f4f5ed;
+}
+.badge.met {
+  background: #e4f1e6;
+  color: #23563e;
+}
+.badge.failed,
+.mandatory {
+  background: #fff0ed;
+  color: #8b3028;
+}
+summary {
+  cursor: pointer;
+  color: var(--green);
+  font-weight: 600;
+  padding: 1rem 0;
+  border-block: 1px solid var(--border);
+}
+.research-note {
+  margin: 1.5rem 0;
+}
+h4 {
+  margin: 1rem 0 0.4rem;
+}
+.research-note p {
+  margin: 0.3rem 0 0.6rem;
+}
+a {
+  overflow-wrap: anywhere;
+}
+.research-note a,
+.checks a {
+  display: block;
+  margin: 0.4rem 0;
+  font-size: 0.8rem;
+}
+.checks {
+  list-style: none;
+  padding: 0;
+}
+.checks li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.checks li > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.checks p {
+  margin: 0.4rem 0;
+  font-size: 0.85rem;
+}
+.official-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  font-weight: 600;
+}
+.card-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.card-title {
+  flex: 1;
+  min-width: 0;
+}
+.institution-icon {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  flex-shrink: 0;
+  color: var(--green);
+  background: #e9f0e8;
+  border: 1px solid #dce7da;
+  border-radius: 0.8rem;
+}
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.location app-icon {
+  width: 1rem;
+  height: 1rem;
+}
+.card-heading > .badge {
+  flex-shrink: 0;
+}
+.sample-label {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.about-results {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+.about-results summary {
+  border: 0;
+  padding: 0.4rem 0;
+  font-weight: 500;
+}
+.pilot-disclaimer {
+  margin-block: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+summary:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 4px;
+  border-radius: 0.2rem;
+}
+@media (max-width: 35rem) {
+  .card-heading {
+    display: grid;
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+  .card-heading > .badge {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .facts {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .institution-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}

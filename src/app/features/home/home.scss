@@ -2,6 +2,8 @@
   display: block;
 }
 .hero {
+  position: relative;
+  isolation: isolate;
   display: grid;
   gap: 3rem;
   padding-block: 4rem;
@@ -36,18 +38,6 @@ h1 {
 p {
   color: var(--muted);
 }
-.hero-note {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  font-size: 0.78rem;
-  margin-top: 1.4rem;
-}
-.hero-note app-icon {
-  width: 1rem;
-  height: 1rem;
-}
 .icon-tile {
   display: inline-flex;
   align-items: center;
@@ -58,24 +48,6 @@ p {
   color: var(--green);
   border-radius: 0.8rem;
   flex-shrink: 0;
-}
-.principle-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 2rem;
-  justify-content: space-between;
-  padding: 1.6rem 0;
-  border-block: 1px solid var(--border);
-}
-.principle-strip span {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  color: var(--muted);
-  font-size: 0.84rem;
-}
-.principle-strip app-icon {
-  width: 1.2rem;
 }
 .pathways,
 .journey {
@@ -128,7 +100,6 @@ h3 {
   font-size: 1.65rem;
 }
 .path-card p:not(.eyebrow) {
-  max-width: 28rem;
   margin: 0 0 2rem;
 }
 .path-card a {
@@ -161,25 +132,35 @@ h3 {
   pointer-events: none;
 }
 .journey-grid article {
-  position: relative;
-  padding: 1.5rem 1.5rem 1rem 0;
-  border-top: 1px solid var(--border);
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: #fffefa;
+  min-width: 0;
+}
+.journey-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
 }
 .step {
-  display: block;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   color: var(--muted);
-  margin-bottom: 1.5rem;
+  font-variant-numeric: tabular-nums;
 }
-.journey-grid article > app-icon {
-  color: var(--green);
+.journey-grid h3 {
+  margin: 0 0 0.75rem;
 }
 .journey-grid p {
   font-size: 0.94rem;
+  margin: 0;
 }
 .principles {
   display: grid;
   gap: 3rem;
+  align-items: center;
   margin-block: 4rem;
   padding: clamp(1.5rem, 4vw, 3rem);
   background: white;
@@ -190,17 +171,19 @@ h3 {
   margin-top: 1.5rem;
 }
 .principles-list article {
-  display: flex;
-  gap: 1rem;
-  padding-block: 1rem;
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  align-items: start;
+  gap: 1.25rem;
+  padding-block: 1.5rem;
   border-bottom: 1px solid var(--border);
 }
 .principles-list article:last-child {
   border: 0;
 }
-.principles-list app-icon {
-  color: var(--green);
-  margin-top: 0.3rem;
+.principles-list .icon-tile {
+  border: 1px solid #d6e3d9;
+  background: #f0f5ee;
 }
 .principles-list h3 {
   margin: 0;
@@ -211,16 +194,51 @@ h3 {
   font-size: 0.9rem;
 }
 .closing {
-  text-align: center;
-  padding: 1rem 0 5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  margin: 0 0 4rem;
+  background: #edf0e1;
+  border: 1px solid #d9dfca;
+  border-radius: 1.5rem;
 }
-.closing > app-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  color: var(--green);
+.closing-art {
+  color: #98af90;
+  border-inline-end: 1px solid #cdd8c3;
+  padding-inline-end: 2rem;
+}
+.closing-art svg {
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+.closing h2 {
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  max-width: 28rem;
+}
+.closing p {
+  margin: 0;
 }
 .closing .button {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+}
+@media (max-width: 40rem) {
+  .closing {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .closing-art {
+    padding: 0;
+    border: 0;
+  }
+  .closing-art svg {
+    max-width: 9rem;
+    margin: 0;
+  }
 }
 :host-context([lang='bn']) h1 {
   line-height: 1.5;
@@ -246,5 +264,17 @@ h3 {
   }
   .path-card {
     padding: 1.5rem;
+  }
+}
+
+.pathways {
+  padding-top: 2.5rem;
+}
+.journey .section-heading {
+  max-width: 40rem;
+}
+@media (min-width: 48rem) {
+  .journey-grid h3 {
+    min-height: 3.5rem;
   }
 }

@@ -68,7 +68,7 @@ $env:PATH = "$PWD\.tools\node;$env:PATH"
 
 Empty directories use .gitkeep files. Future features must access JSON through injectable repository abstractions. There is no backend, database, authentication, admin panel, runtime AI, crawler, job-seeker functionality, or infrastructure in this milestone.
 
-The foundation and data-access milestones are implemented. Content population is limited to unverified reference samples; real institution/program/agency and guide collections remain empty.
+The foundation and data-access milestones are implemented. The student completion page now includes ten official-source draft program examples. Agencies and guides remain empty. See docs/student-pilot-research.md for scope and limitations.
 
 ## Milestone 2 behavior
 
@@ -84,7 +84,7 @@ Static hosting will need SPA deep-link fallback when deployment is approved. The
 
 Strongly typed contracts and runtime decoders live in `src/app/core/models`. Injectable repository abstractions and JSON providers live in `src/app/core/repositories`. Components access data through these abstractions and do not fetch JSON directly. No new runtime dependencies were added.
 
-Tests import and validate the actual public JSON files, exercise malformed data and relationships, and verify HTTP failures, retry, shared loading, and provider replacement. Seven draft reference records are supplied; no institution, program, agency, contact, fee, admission requirement, or visa claim was invented. Empty entity collections are intentional and are not a completed content seed milestone.
+Tests import and validate the actual public JSON files, exercise malformed data and relationships, and verify HTTP failures, retry, shared loading, and provider replacement. Reference fixtures and an official-source program pilot are supplied. Pilot records remain development samples awaiting independent review; absent facts remain null.
 
 ## Student questionnaire
 
@@ -117,7 +117,7 @@ Null requirement values remain unknown. Empty accepted education/background sets
 
 Intakes require the preferred year/month, a known start date that has not passed, and a known application deadline. The exact deadline instant is included; later instants fail. An undated possible intake preserves uncertainty unless another intake is confirmed available. No deadline or intake is inferred from labels.
 
-The tests use synthetic fixtures excluded from production compilation. Public JSON remains unchanged and real program collections remain empty. Results show sources, last-checked dates, and the exact brief disclaimer: “This is a preliminary informational assessment based on the information available. It does not guarantee admission, a scholarship, or visa approval.”
+The tests use synthetic fixtures excluded from production compilation. Public JSON includes ten real program examples, kept separate from synthetic arithmetic test fixtures. Results show sources, last-checked dates, and the exact brief disclaimer: “This is a preliminary informational assessment based on the information available. It does not guarantee admission, a scholarship, or visa approval.”
 
 ## Program search and results
 
@@ -125,16 +125,46 @@ The tests use synthetic fixtures excluded from production compilation. Public JS
 
 Apply/Clear controls update URL query parameters: `q`, `country`, `city`, `degree`, `subject`, `min`, `max`, `currency`, `intake`, `language`, `scholarship`, and `institutionType`. Links and browser navigation restore these filters. Invalid URL/form filters produce an accessible error rather than silently broadening the search. Tuition ranges require annual amounts and the same explicit currency; intake filters select the start month, while matching separately evaluates deadlines. Unknown tuition is excluded from a numeric range.
 
-The questionnaire completion link carries known destination/degree IDs into visible filters. Self-reported destinations, cities, and subjects are not guessed or mapped to IDs. Other preferences can be selected using the visible filters. Completed answers never enter URLs, sessionStorage, or localStorage; URL filters are shareable but personalized outcomes require an in-memory completed questionnaire.
+The completed questionnaire now embeds the limited pilot directly, narrowing examples by known destination/degree IDs. The older search feature remains disabled. Self-reported destinations, cities, and subjects are not guessed or mapped to IDs. Other preferences can be selected using the visible filters. Completed answers never enter URLs, sessionStorage, or localStorage; URL filters are shareable but personalized outcomes require an in-memory completed questionnaire.
 
 When a profile is present, every displayed program receives all eight matching outcomes. Results sort by the four documented classifications, then English program name and stable ID. Mandatory failures remain visible outside the expandable requirement explanation. Outcomes, thresholds, source links, verification status, last-checked dates, and the disclaimer are translated for English/Bengali. Browsing without a profile shows listings without eligibility claims.
 
 Scholarship filtering uses optional `scholarshipAvailability: { value: boolean | null, sourceIds: string[] }`. Older datasets decode to unknown. Descriptive scholarship text is never interpreted as availability or personal eligibility. Known published availability needs a source under the existing claim-validation rules.
 
-Loading, retryable errors, empty public catalog, no filter matches, and no all-requirements-met states are distinct. The current shipped catalog correctly displays no published programs. Populated results are tested using synthetic fixtures only; no real or fictional public listings were added. No new dependency or browser persistence mechanism was introduced.
+Loading, retryable errors, empty public catalog, no filter matches, and no all-requirements-met states are distinct. The current shipped catalog correctly displays no published programs. The student pilot uses real draft records; these are deliberately excluded from the disabled public search. Tests validate both minimal fixtures and the actual shipped catalog. No new dependency or browser persistence mechanism was introduced.
 
 ## Visual design
 
 The site uses an emerald and warm ivory visual system, a custom decorative SVG globe, and a small shared outline-icon component. The homepage presents separate student and job-seeker paths, the questionnaire process, and factual explanations of privacy and service limits. English and Bengali copy are supported throughout. No endorsements, success statistics, or company credentials are implied by the artwork.
 
 Shared questionnaire presentation lives in `src/_assessment-design.scss`; form validation, matching, repositories, and draft storage behavior are unchanged. The homepage illustration is isolated in the `Horizon` component to keep component styles within the existing size budgets. Graphics and fonts require no external requests or new dependencies. Programs, Agencies, and Compare remain disabled.
+
+Layout refinement: removed the redundant homepage information strip, standardized process and principles icon tiles, and consolidated questionnaire actions into one responsive footer. The step grid now uses equal columns and shared styling without conflicting feature overrides. External form-associated submit buttons preserve native form validation and keyboard submission behavior, covered by regression tests.
+
+Results presentation: removed the global development-preview banner and the redundant completion introduction. Student results use one heading, a compact sample label, expandable selection notes, and university cards with consistent icons and a grouped cost/duration panel. The required disclaimer remains below the list; fee context, sources and review status remain available. Desktop questionnaire steps now have subtle connectors, hidden when the layout wraps on mobile.
+
+Results controls update: the Assessment result page shows selection explanations directly. A reactive country dropdown replaces the all-examples toggle; changing country preserves the submitted degree and profile, including tuition inputs. The default option restores the submitted destination. Missing country/degree coverage remains an explicit empty state. The informational guidance notice is displayed directly beneath the header in both languages.
+
+Save popup: the completed student assessment includes a native modal dialog with typed reactive email/password/confirmation fields. This is a UI-only registration preview; it explicitly states that no account or saved assessment is created. Credentials are not transmitted or persisted and are cleared on closing the dialog. Two labelled consultancy layout placeholders appear below the results; they are not real agencies or endorsements.
+
+Results presentation refinement: the final questionnaire action is Show result. Save opens the existing popup from the right side of the results title. The detailed calculated requirement-check list is temporarily omitted from the results UI at product request; source-backed admission notes remain available and the matching engine is unchanged. Agency placeholders now include a responsibility notice in English and Bengali.
+
+Footer redesign: stronger brand headline, subtle decorative rings, navigation cards with arrow accents and keyboard focus styles, and a quieter disclaimer divider. The two-column desktop composition stacks on small screens and uses existing bilingual content without introducing new services or links.
+
+Header refresh: deep emerald header and guidance strip now coordinate with the footer, using a pale logo mark, light navigation text, a visible active-page underline, matching language controls and high-contrast keyboard focus indicators.
+
+Brand identity: the header and footer share a vector globe-and-paper-plane emblem with a two-tone Go Abroad wordmark, implemented in shared/components/brand.ts. The mark is decorative within the existing accessible home links and requires no image downloads or external fonts.
+
+Homepage closing section: a sage panel now pairs a decorative vector travel illustration with the existing headline and Choose your path link. It stacks on small screens and retains the English/Bengali copy and pathways anchor behavior.
+
+Hero refinement: the guidance banner uses light sage with dark text. The decorative globe panel's top label and compass icon are removed. A separate lightweight decorative component adds slow CSS shape movement behind the hero, ignores pointer events and disables animation for reduced-motion preferences.
+
+Job-seeker country guides: questionnaire completion now displays a small official-source research pilot for the UK, Germany and Canada. Country selection uses submitted preferences and an explicit results dropdown. Each card explains a job-application and work-visa route with source links, review status and check dates. This is introductory guidance, not personal visa eligibility or live vacancies. See docs/work-country-guides.md for the file list, data contract and research limitations.
+
+Job education fields: populated dropdowns now use public/data/job-options.json through an injectable, validating JobOptionsRepository. Nine generic education categories and thirteen study fields have English/Bengali labels. Other supports custom answers, including existing free-text drafts. Values retain their original English category labels in the existing self-reported profile contract; no qualification equivalence is inferred. Loading errors offer retry and manual entry.
+
+Job experience: the questionnaire offers no experience and 1-50 years, plus exact-month entry for partial years or longer experience. Existing month-based drafts and profile values are preserved; English and Bengali labels are supported.
+
+Job country selection: Work preferences now uses a localized country dropdown backed by job-options.json, covering Canada, Germany, Netherlands and United Kingdom. Other supports unlisted destinations and preserves older multi-country drafts. Selection remains optional and does not imply work eligibility or guide availability.
+
+Job results now show Assessment result with a concise introduction, the submitted country selected (or its original name when no guide exists), and a top-right Save popup shared with student results. Profile summary cards are removed. Save remains UI-only: no account creation or permanent profile storage is implemented.

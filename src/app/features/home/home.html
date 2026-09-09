@@ -1,4 +1,5 @@
 ﻿<section class="hero" aria-labelledby="home-heading">
+  <app-hero-shapes />
   <div class="hero-copy">
     <p class="eyebrow">
       <span class="tiny-dot" aria-hidden="true"></span>{{ i18n.text().eyebrow }}
@@ -8,18 +9,9 @@
     <a class="button" [routerLink]="['/', i18n.language()]" fragment="pathways"
       >{{ copy().choose }} <app-icon name="arrow"
     /></a>
-    <p class="hero-note">
-      <app-icon name="check" />{{ copy().noAccount }}<span aria-hidden="true">·</span> English &
-      বাংলা
-    </p>
   </div>
   <app-horizon [text]="copy()" />
 </section>
-<div class="principle-strip">
-  <span><app-icon name="compass" />{{ copy().planning }}</span
-  ><span><app-icon name="lock" />{{ copy().noAccount }}</span
-  ><span><app-icon name="globe" />English & বাংলা</span>
-</div>
 <section id="pathways" class="pathways" aria-labelledby="path-heading">
   <div class="section-heading">
     <p class="eyebrow">{{ copy().accent }}</p>
@@ -54,17 +46,23 @@
   </div>
   <div class="journey-grid">
     <article>
-      <span class="step">01</span><app-icon name="document" />
+      <div class="journey-top">
+        <span class="icon-tile"><app-icon name="document" /></span><span class="step">01</span>
+      </div>
       <h3>{{ i18n.text().profileTitle }}</h3>
       <p>{{ i18n.text().profileText }}</p>
     </article>
     <article>
-      <span class="step">02</span><app-icon name="check" />
+      <div class="journey-top">
+        <span class="icon-tile"><app-icon name="check" /></span><span class="step">02</span>
+      </div>
       <h3>{{ i18n.text().optionsTitle }}</h3>
       <p>{{ i18n.text().optionsText }}</p>
     </article>
     <article>
-      <span class="step">03</span><app-icon name="compass" />
+      <div class="journey-top">
+        <span class="icon-tile"><app-icon name="compass" /></span><span class="step">03</span>
+      </div>
       <h3>{{ i18n.text().decisionTitle }}</h3>
       <p>{{ i18n.text().decisionText }}</p>
     </article>
@@ -78,21 +76,21 @@
   </div>
   <div class="principles-list">
     <article>
-      <app-icon name="lock" />
+      <span class="icon-tile"><app-icon name="lock" /></span>
       <div>
         <h3>{{ copy().privacy }}</h3>
         <p>{{ copy().privacyText }}</p>
       </div>
     </article>
     <article>
-      <app-icon name="document" />
+      <span class="icon-tile"><app-icon name="document" /></span>
       <div>
         <h3>{{ copy().honest }}</h3>
         <p>{{ copy().honestText }}</p>
       </div>
     </article>
     <article>
-      <app-icon name="globe" />
+      <span class="icon-tile"><app-icon name="globe" /></span>
       <div>
         <h3>{{ copy().bilingual }}</h3>
         <p>{{ copy().bilingualText }}</p>
@@ -101,10 +99,28 @@
   </div>
 </section>
 <section class="closing" aria-labelledby="closing-heading">
-  <app-icon name="globe" />
-  <h2 id="closing-heading">{{ copy().ready }}</h2>
-  <p>{{ copy().readyText }}</p>
-  <a class="button" [routerLink]="['/', i18n.language()]" fragment="pathways"
-    >{{ copy().choose }}<app-icon name="arrow"
-  /></a>
+  <div class="closing-art" aria-hidden="true">
+    <svg viewBox="0 0 220 180" fill="none" focusable="false">
+      <circle cx="96" cy="93" r="63" stroke="currentColor" stroke-width="1.2" />
+      <ellipse cx="96" cy="93" rx="29" ry="63" stroke="currentColor" />
+      <path d="M33 93h126M43 58c29 17 78 17 106 0M43 128c29-17 78-17 106 0" stroke="currentColor" />
+      <path
+        d="M17 149c30 0 86-10 140-87"
+        stroke="#a67b31"
+        stroke-width="2"
+        stroke-dasharray="4 7"
+      />
+      <path d="m141 48 47-18-17 48-10-21-20-9Z" fill="#235a46" />
+      <path d="m161 57 16-16" stroke="#f7f5e9" stroke-width="1.5" />
+      <circle cx="22" cy="149" r="5" fill="#a67b31" />
+      <path d="M189 121v14m-7-7h14M40 20v10m-5-5h10" stroke="#a67b31" stroke-width="1.5" />
+    </svg>
+  </div>
+  <div class="closing-copy">
+    <h2 id="closing-heading">{{ copy().ready }}</h2>
+    <p>{{ copy().readyText }}</p>
+    <a class="button" [routerLink]="['/', i18n.language()]" fragment="pathways"
+      >{{ copy().choose }}<app-icon name="arrow"
+    /></a>
+  </div>
 </section>

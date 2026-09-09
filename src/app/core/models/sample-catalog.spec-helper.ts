@@ -10,7 +10,7 @@ import countryGuides from '../../../../public/data/country-guides.json';
 import visaGuides from '../../../../public/data/visa-guides.json';
 import agencies from '../../../../public/data/agencies.json';
 
-export const sampleCatalog = {
+export const shippedCatalog = {
   countries,
   cities,
   educationLevels,
@@ -21,4 +21,34 @@ export const sampleCatalog = {
   countryGuides,
   visaGuides,
   agencies,
+};
+
+// Stable minimal fixtures for validation/matching edge cases; pilot contents are tested separately.
+export const sampleCatalog = {
+  ...shippedCatalog,
+  countries: {
+    ...countries,
+    data: countries.data.slice(0, 1),
+    pagination: { ...countries.pagination, totalItems: 1, totalPages: 1 },
+  },
+  cities: {
+    ...cities,
+    data: [],
+    pagination: { ...cities.pagination, totalItems: 0, totalPages: 0 },
+  },
+  subjects: {
+    ...subjects,
+    data: subjects.data.slice(0, 2),
+    pagination: { ...subjects.pagination, totalItems: 2, totalPages: 1 },
+  },
+  institutions: {
+    ...institutions,
+    data: [],
+    pagination: { ...institutions.pagination, totalItems: 0, totalPages: 0 },
+  },
+  programs: {
+    ...programs,
+    data: [],
+    pagination: { ...programs.pagination, totalItems: 0, totalPages: 0 },
+  },
 };

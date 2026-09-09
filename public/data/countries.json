@@ -21,17 +21,83 @@
         }
       ],
       "isoCode": "BD"
+    },
+    {
+      "id": "country-nl",
+      "slug": "country-nl",
+      "name": {
+        "en": "Netherlands",
+        "bn": "নেদারল্যান্ডস"
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [
+        {
+          "id": "location",
+          "url": "https://www.utwente.nl/en/education/master/programmes/computer-science/masters-structure/factsheet/",
+          "title": "University of Twente — location",
+          "checkedAt": "2026-09-09T07:25:52.332Z"
+        }
+      ],
+      "isoCode": "NL"
+    },
+    {
+      "id": "country-gb",
+      "slug": "country-gb",
+      "name": {
+        "en": "United Kingdom",
+        "bn": "যুক্তরাজ্য"
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [
+        {
+          "id": "location",
+          "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2026/computer-science-msc",
+          "title": "University of Sheffield — location",
+          "checkedAt": "2026-09-09T07:25:52.332Z"
+        }
+      ],
+      "isoCode": "GB"
+    },
+    {
+      "id": "country-ca",
+      "slug": "country-ca",
+      "name": {
+        "en": "Canada",
+        "bn": "কানাডা"
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [
+        {
+          "id": "location",
+          "url": "https://umanitoba.ca/explore/programs-of-study/computer-science-bsc",
+          "title": "University of Manitoba — location",
+          "checkedAt": "2026-09-09T07:25:52.332Z"
+        }
+      ],
+      "isoCode": "CA"
     }
   ],
   "pagination": {
     "page": 1,
     "pageSize": 20,
-    "totalItems": 1,
+    "totalItems": 4,
     "totalPages": 1
   },
   "metadata": {
     "version": "1.0",
-    "lastUpdated": "2026-09-08T00:00:00Z",
+    "lastUpdated": "2026-09-09T07:25:52.332Z",
     "isDevelopmentSample": true,
     "notice": {
       "en": "Development sample only. Not verified information; do not use for admission or visa decisions.",

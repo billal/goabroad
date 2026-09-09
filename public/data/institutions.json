@@ -1,14 +1,138 @@
 {
-  "data": [],
+  "data": [
+    {
+      "id": "institution-twente",
+      "slug": "institution-twente",
+      "name": {
+        "en": "University of Twente",
+        "bn": null
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [
+        {
+          "id": "university",
+          "url": "https://www.utwente.nl/en/education/master/programmes/computer-science/masters-structure/factsheet/",
+          "title": "University of Twente — official program information",
+          "checkedAt": "2026-09-09T07:25:52.332Z"
+        }
+      ],
+      "shortName": null,
+      "countryId": "country-nl",
+      "cityId": "city-enschede",
+      "institutionType": null,
+      "overview": null,
+      "officialWebsite": "https://www.utwente.nl/",
+      "admissionUrl": "https://www.utwente.nl/en/education/master/programmes/computer-science/masters-structure/factsheet/",
+      "address": {
+        "value": null,
+        "sourceIds": []
+      },
+      "contacts": {
+        "value": null,
+        "sourceIds": []
+      },
+      "recognition": {
+        "value": null,
+        "sourceIds": []
+      },
+      "logoUrl": null
+    },
+    {
+      "id": "institution-sheffield",
+      "slug": "institution-sheffield",
+      "name": {
+        "en": "University of Sheffield",
+        "bn": null
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [
+        {
+          "id": "university",
+          "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2026/computer-science-msc",
+          "title": "University of Sheffield — official program information",
+          "checkedAt": "2026-09-09T07:25:52.332Z"
+        }
+      ],
+      "shortName": null,
+      "countryId": "country-gb",
+      "cityId": "city-sheffield",
+      "institutionType": null,
+      "overview": null,
+      "officialWebsite": "https://sheffield.ac.uk/",
+      "admissionUrl": "https://sheffield.ac.uk/postgraduate/taught/courses/2026/computer-science-msc",
+      "address": {
+        "value": null,
+        "sourceIds": []
+      },
+      "contacts": {
+        "value": null,
+        "sourceIds": []
+      },
+      "recognition": {
+        "value": null,
+        "sourceIds": []
+      },
+      "logoUrl": null
+    },
+    {
+      "id": "institution-manitoba",
+      "slug": "institution-manitoba",
+      "name": {
+        "en": "University of Manitoba",
+        "bn": null
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [
+        {
+          "id": "university",
+          "url": "https://umanitoba.ca/explore/programs-of-study/computer-science-bsc",
+          "title": "University of Manitoba — official program information",
+          "checkedAt": "2026-09-09T07:25:52.332Z"
+        }
+      ],
+      "shortName": null,
+      "countryId": "country-ca",
+      "cityId": "city-winnipeg",
+      "institutionType": null,
+      "overview": null,
+      "officialWebsite": "https://umanitoba.ca/",
+      "admissionUrl": "https://umanitoba.ca/explore/programs-of-study/computer-science-bsc",
+      "address": {
+        "value": null,
+        "sourceIds": []
+      },
+      "contacts": {
+        "value": null,
+        "sourceIds": []
+      },
+      "recognition": {
+        "value": null,
+        "sourceIds": []
+      },
+      "logoUrl": null
+    }
+  ],
   "pagination": {
     "page": 1,
     "pageSize": 20,
-    "totalItems": 0,
-    "totalPages": 0
+    "totalItems": 3,
+    "totalPages": 1
   },
   "metadata": {
     "version": "1.0",
-    "lastUpdated": "2026-09-08T00:00:00Z",
+    "lastUpdated": "2026-09-09T07:25:52.332Z",
     "isDevelopmentSample": true,
     "notice": {
       "en": "Development sample only. Not verified information; do not use for admission or visa decisions.",

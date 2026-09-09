@@ -1,0 +1,138 @@
+{
+  "education": [
+    {
+      "id": "none",
+      "en": "No formal qualification",
+      "bn": "প্রাতিষ্ঠানিক যোগ্যতা নেই"
+    },
+    {
+      "id": "primary",
+      "en": "Primary education",
+      "bn": "প্রাথমিক শিক্ষা"
+    },
+    {
+      "id": "secondary",
+      "en": "Secondary education",
+      "bn": "মাধ্যমিক শিক্ষা"
+    },
+    {
+      "id": "higher-secondary",
+      "en": "Higher secondary education",
+      "bn": "উচ্চমাধ্যমিক শিক্ষা"
+    },
+    {
+      "id": "vocational",
+      "en": "Vocational qualification",
+      "bn": "কারিগরি যোগ্যতা"
+    },
+    {
+      "id": "diploma",
+      "en": "Diploma",
+      "bn": "ডিপ্লোমা"
+    },
+    {
+      "id": "bachelor",
+      "en": "Bachelor’s degree",
+      "bn": "স্নাতক ডিগ্রি"
+    },
+    {
+      "id": "master",
+      "en": "Master’s degree",
+      "bn": "স্নাতকোত্তর ডিগ্রি"
+    },
+    {
+      "id": "doctorate",
+      "en": "Doctorate / PhD",
+      "bn": "ডক্টরেট / পিএইচডি"
+    }
+  ],
+  "fieldOfStudy": [
+    {
+      "id": "computing",
+      "en": "Computer science and IT",
+      "bn": "কম্পিউটার বিজ্ঞান ও আইটি"
+    },
+    {
+      "id": "engineering",
+      "en": "Engineering",
+      "bn": "প্রকৌশল"
+    },
+    {
+      "id": "business",
+      "en": "Business and management",
+      "bn": "ব্যবসা ও ব্যবস্থাপনা"
+    },
+    {
+      "id": "finance",
+      "en": "Accounting and finance",
+      "bn": "হিসাববিজ্ঞান ও অর্থায়ন"
+    },
+    {
+      "id": "health",
+      "en": "Healthcare and nursing",
+      "bn": "স্বাস্থ্যসেবা ও নার্সিং"
+    },
+    {
+      "id": "education",
+      "en": "Education and teaching",
+      "bn": "শিক্ষা ও শিক্ষকতা"
+    },
+    {
+      "id": "science",
+      "en": "Natural sciences",
+      "bn": "প্রাকৃতিক বিজ্ঞান"
+    },
+    {
+      "id": "social",
+      "en": "Social sciences",
+      "bn": "সমাজবিজ্ঞান"
+    },
+    {
+      "id": "arts",
+      "en": "Arts and humanities",
+      "bn": "কলা ও মানবিক"
+    },
+    {
+      "id": "law",
+      "en": "Law",
+      "bn": "আইন"
+    },
+    {
+      "id": "agriculture",
+      "en": "Agriculture",
+      "bn": "কৃষি"
+    },
+    {
+      "id": "hospitality",
+      "en": "Hospitality and tourism",
+      "bn": "আতিথেয়তা ও পর্যটন"
+    },
+    {
+      "id": "trades",
+      "en": "Skilled trades",
+      "bn": "কারিগরি পেশা"
+    }
+  ],
+  "countries": [
+    {
+      "id": "ca",
+      "en": "Canada",
+      "bn": "কানাডা"
+    },
+    {
+      "id": "de",
+      "en": "Germany",
+      "bn": "জার্মানি"
+    },
+    {
+      "id": "nl",
+      "en": "Netherlands",
+      "bn": "নেদারল্যান্ডস"
+    },
+    {
+      "id": "gb",
+      "en": "United Kingdom",
+      "bn": "যুক্তরাজ্য"
+    }
+  ]
+}

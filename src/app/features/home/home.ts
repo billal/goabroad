@@ -2,11 +2,12 @@
 import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../core/i18n/language.service';
 import { Horizon } from './horizon';
+import { HeroShapes } from './hero-shapes';
 import { Icon } from '../../shared/components/icon';
 import { homeText } from './home-text';
 @Component({
   standalone: true,
-  imports: [RouterLink, Icon, Horizon],
+  imports: [RouterLink, Icon, Horizon, HeroShapes],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

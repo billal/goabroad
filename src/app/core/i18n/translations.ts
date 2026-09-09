@@ -42,6 +42,8 @@
     'A thoughtful starting point for your study and work ambitions abroad. Made for people in Bangladesh.',
   disclaimer:
     'Go Abroad provides informational guidance only. Admission, scholarships, visas, and agency outcomes are never guaranteed.',
+  guidanceBody:
+    'provides informational guidance only. Admission, scholarships, visas, and agency outcomes are never guaranteed.',
   loading: 'Loading page…',
   navigationError: 'This page could not be loaded. Please try again.',
   retry: 'Try again',
@@ -97,6 +99,8 @@ export const bn: Translations = {
   footer: 'বিদেশে পড়াশোনা ও কাজের স্বপ্নের একটি চিন্তাশীল শুরু। বাংলাদেশের মানুষের জন্য।',
   disclaimer:
     'Go Abroad শুধু তথ্যভিত্তিক দিকনির্দেশনা দেয়। ভর্তি, বৃত্তি, ভিসা বা এজেন্সির সেবার ফলাফলের কোনো নিশ্চয়তা দেওয়া হয় না।',
+  guidanceBody:
+    'শুধু তথ্যভিত্তিক দিকনির্দেশনা দেয়। ভর্তি, বৃত্তি, ভিসা বা এজেন্সির সেবার ফলাফলের কোনো নিশ্চয়তা দেওয়া হয় না।',
   loading: 'পৃষ্ঠাটি লোড হচ্ছে…',
   navigationError: 'পৃষ্ঠাটি লোড করা যায়নি। আবার চেষ্টা করুন।',
   retry: 'আবার চেষ্টা করুন',

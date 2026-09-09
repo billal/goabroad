@@ -29,17 +29,92 @@
       "isDevelopmentSample": true,
       "sources": [],
       "description": null
+    },
+    {
+      "id": "subject-business",
+      "slug": "subject-business",
+      "name": {
+        "en": "Business administration",
+        "bn": "ব্যবসায় প্রশাসন"
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [],
+      "description": null
+    },
+    {
+      "id": "subject-mechanical-engineering",
+      "slug": "subject-mechanical-engineering",
+      "name": {
+        "en": "Mechanical engineering",
+        "bn": "যন্ত্রকৌশল"
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [],
+      "description": null
+    },
+    {
+      "id": "subject-electrical-engineering",
+      "slug": "subject-electrical-engineering",
+      "name": {
+        "en": "Electrical engineering",
+        "bn": "তড়িৎকৌশল"
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [],
+      "description": null
+    },
+    {
+      "id": "subject-data-science",
+      "slug": "subject-data-science",
+      "name": {
+        "en": "Data science",
+        "bn": "ডেটা সায়েন্স"
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [],
+      "description": null
+    },
+    {
+      "id": "subject-statistics",
+      "slug": "subject-statistics",
+      "name": {
+        "en": "Statistics",
+        "bn": "পরিসংখ্যান"
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [],
+      "description": null
     }
   ],
   "pagination": {
     "page": 1,
     "pageSize": 20,
-    "totalItems": 2,
+    "totalItems": 7,
     "totalPages": 1
   },
   "metadata": {
     "version": "1.0",
-    "lastUpdated": "2026-09-08T00:00:00Z",
+    "lastUpdated": "2026-09-09T07:25:52.332Z",
     "isDevelopmentSample": true,
     "notice": {
       "en": "Development sample only. Not verified information; do not use for admission or visa decisions.",

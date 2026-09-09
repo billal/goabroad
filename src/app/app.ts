@@ -11,10 +11,11 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { LanguageService } from './core/i18n/language.service';
+import { Brand } from './shared/components/brand';
 
 @Component({
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, Brand],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',

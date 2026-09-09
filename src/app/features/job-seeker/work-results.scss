@@ -1,0 +1,106 @@
+:host {
+  display: block;
+  margin: 2rem 0;
+}
+h2 {
+  font-size: 1.8rem;
+}
+p {
+  color: var(--muted);
+}
+.tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+}
+select {
+  max-width: 100%;
+  padding: 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: white;
+  color: var(--ink);
+  font: inherit;
+}
+.cards {
+  display: grid;
+  gap: 1.5rem;
+}
+article {
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: white;
+  min-width: 0;
+}
+.card-heading {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.icon {
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  background: #edf3e9;
+  display: flex;
+}
+h3 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.card-heading p {
+  margin: 0.2rem 0;
+}
+.status {
+  font-size: 0.75rem;
+  padding-block: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+h4 {
+  margin-bottom: 0.5rem;
+}
+ol {
+  padding-inline-start: 1.4rem;
+}
+li {
+  padding: 0.3rem 0 0.75rem 0.3rem;
+}
+li::marker {
+  color: var(--green);
+  font-weight: 700;
+}
+li p {
+  margin: 0 0 0.3rem;
+  font-size: 0.9rem;
+}
+li a {
+  font-size: 0.75rem;
+}
+.links {
+  display: grid;
+  gap: 0.75rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+.links a {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.disclaimer {
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+a {
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,210 @@
+{
+  "data": [
+    {
+      "id": "work-gb",
+      "slug": "work-gb",
+      "name": {
+        "en": "United Kingdom",
+        "bn": "যুক্তরাজ্য"
+      },
+      "countryCode": "GB",
+      "aliases": [
+        "UK",
+        "Great Britain"
+      ],
+      "route": {
+        "en": "Skilled Worker visa",
+        "bn": "Skilled Worker ভিসা"
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "isDevelopmentSample": true,
+      "lastCheckedAt": "2026-09-09T10:38:41.720Z",
+      "updatedAt": "2026-09-09T10:38:41.720Z",
+      "sources": [
+        {
+          "id": "jobs",
+          "title": "GOV.UK — Find a job",
+          "url": "https://www.gov.uk/find-a-job",
+          "checkedAt": "2026-09-09T10:38:41.720Z"
+        },
+        {
+          "id": "visa",
+          "title": "GOV.UK — Skilled Worker visa",
+          "url": "https://www.gov.uk/skilled-worker-visa",
+          "checkedAt": "2026-09-09T10:38:41.720Z"
+        },
+        {
+          "id": "apply",
+          "title": "GOV.UK — Apply from outside the UK",
+          "url": "https://www.gov.uk/skilled-worker-visa/apply-from-outside-the-uk",
+          "checkedAt": "2026-09-09T10:38:41.720Z"
+        }
+      ],
+      "steps": [
+        {
+          "text": {
+            "en": "Use the official job-search service and follow each employer’s application instructions. A listing does not establish sponsorship.",
+            "bn": "সরকারি চাকরি অনুসন্ধান সেবা ব্যবহার করে নিয়োগদাতার আবেদন নির্দেশনা অনুসরণ করুন। তালিকাভুক্তি স্পনসরশিপ নিশ্চিত করে না।"
+          },
+          "sourceId": "jobs"
+        },
+        {
+          "text": {
+            "en": "For this route, secure an offer from an approved sponsor and a certificate of sponsorship. Check occupation, salary and English requirements.",
+            "bn": "এই পথে অনুমোদিত স্পনসরের চাকরির প্রস্তাব ও স্পনসরশিপ সনদ প্রয়োজন। পেশা, বেতন ও ইংরেজির শর্ত যাচাই করুন।"
+          },
+          "sourceId": "visa"
+        },
+        {
+          "text": {
+            "en": "Use the outside-UK application guide if applying from abroad. Submit the online application and follow the identity and document instructions.",
+            "bn": "বিদেশ থেকে আবেদন করলে যুক্তরাজ্যের বাইরের আবেদন নির্দেশনা দেখুন। অনলাইনে আবেদন করে পরিচয় ও নথির নির্দেশনা অনুসরণ করুন।"
+          },
+          "sourceId": "apply"
+        }
+      ],
+      "jobSourceId": "jobs",
+      "visaSourceId": "visa"
+    },
+    {
+      "id": "work-de",
+      "slug": "work-de",
+      "name": {
+        "en": "Germany",
+        "bn": "জার্মানি"
+      },
+      "countryCode": "DE",
+      "aliases": [
+        "Deutschland"
+      ],
+      "route": {
+        "en": "Work visa for qualified professionals",
+        "bn": "যোগ্য পেশাজীবীদের কর্মভিসা"
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "isDevelopmentSample": true,
+      "lastCheckedAt": "2026-09-09T10:38:41.720Z",
+      "updatedAt": "2026-09-09T10:38:41.720Z",
+      "sources": [
+        {
+          "id": "jobs",
+          "title": "Make it in Germany — Job listings",
+          "url": "https://www.make-it-in-germany.com/en/working-in-germany/job-listings",
+          "checkedAt": "2026-09-09T10:38:41.720Z"
+        },
+        {
+          "id": "application",
+          "title": "Make it in Germany — Applying for a job",
+          "url": "https://www.make-it-in-germany.com/en/working-in-germany/job/application",
+          "checkedAt": "2026-09-09T10:38:41.720Z"
+        },
+        {
+          "id": "visa",
+          "title": "Make it in Germany — Work visa for qualified professionals",
+          "url": "https://www.make-it-in-germany.com/en/visa-residence/types/work-qualified-professionals",
+          "checkedAt": "2026-09-09T10:38:41.720Z"
+        }
+      ],
+      "steps": [
+        {
+          "text": {
+            "en": "Search the official job portal. Prepare your CV, cover letter and relevant certificates as requested by the employer.",
+            "bn": "সরকারি চাকরির পোর্টালে খুঁজুন। নিয়োগদাতার চাহিদা অনুযায়ী জীবনবৃত্তান্ত, কভার লেটার ও প্রাসঙ্গিক সনদ প্রস্তুত করুন।"
+          },
+          "sourceId": "application"
+        },
+        {
+          "text": {
+            "en": "Check qualification recognition and obtain a qualified job offer. Regulated professions may require a licence; other conditions also apply.",
+            "bn": "যোগ্যতার স্বীকৃতি যাচাই করুন এবং যোগ্যতাভিত্তিক চাকরির প্রস্তাব সংগ্রহ করুন। নিয়ন্ত্রিত পেশায় লাইসেন্স লাগতে পারে; অন্যান্য শর্তও প্রযোজ্য।"
+          },
+          "sourceId": "visa"
+        },
+        {
+          "text": {
+            "en": "Follow the official route guide to the Consular Services Portal. Check the responsible German mission’s document and appointment instructions.",
+            "bn": "সরকারি নির্দেশনা থেকে কনস্যুলার সেবা পোর্টালে যান। দায়িত্বপ্রাপ্ত জার্মান মিশনের নথি ও সাক্ষাতের নির্দেশনা যাচাই করুন।"
+          },
+          "sourceId": "visa"
+        }
+      ],
+      "jobSourceId": "jobs",
+      "visaSourceId": "visa"
+    },
+    {
+      "id": "work-ca",
+      "slug": "work-ca",
+      "name": {
+        "en": "Canada",
+        "bn": "কানাডা"
+      },
+      "countryCode": "CA",
+      "aliases": [],
+      "route": {
+        "en": "Employer-specific work permit",
+        "bn": "নির্দিষ্ট নিয়োগদাতার জন্য ওয়ার্ক পারমিট"
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "isDevelopmentSample": true,
+      "lastCheckedAt": "2026-09-09T10:38:41.720Z",
+      "updatedAt": "2026-09-09T10:38:41.720Z",
+      "sources": [
+        {
+          "id": "jobs",
+          "title": "Job Bank — Foreign candidates",
+          "url": "https://www.jobbank.gc.ca/findajob/foreign-candidates",
+          "checkedAt": "2026-09-09T10:38:41.720Z"
+        },
+        {
+          "id": "visa",
+          "title": "IRCC — Employer-specific work permits",
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/employer-specific.html",
+          "checkedAt": "2026-09-09T10:38:41.720Z"
+        }
+      ],
+      "steps": [
+        {
+          "text": {
+            "en": "Use Job Bank’s foreign-candidate listings and follow employer application instructions. A job application is separate from permission to work.",
+            "bn": "Job Bank-এর বিদেশি প্রার্থীদের তালিকা ব্যবহার করে নিয়োগদাতার নির্দেশনা অনুসরণ করুন। চাকরির আবেদন কাজের অনুমতির সমান নয়।"
+          },
+          "sourceId": "jobs"
+        },
+        {
+          "text": {
+            "en": "Obtain a job offer. Ask the employer whether an LMIA is needed or an exemption applies, and obtain the required employer documents.",
+            "bn": "চাকরির প্রস্তাব সংগ্রহ করুন। LMIA লাগবে কি না বা ছাড় প্রযোজ্য কি না নিয়োগদাতাকে জিজ্ঞাসা করে প্রয়োজনীয় নথি নিন।"
+          },
+          "sourceId": "visa"
+        },
+        {
+          "text": {
+            "en": "Check general eligibility and follow IRCC’s application instructions for your location. This card covers one permit route, not every work option.",
+            "bn": "সাধারণ যোগ্যতা যাচাই করে আপনার অবস্থানের জন্য IRCC-এর আবেদন নির্দেশনা অনুসরণ করুন। এই কার্ডে একটি পারমিটের পথ দেখানো হয়েছে, সব বিকল্প নয়।"
+          },
+          "sourceId": "visa"
+        }
+      ],
+      "jobSourceId": "jobs",
+      "visaSourceId": "visa"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "pageSize": 20,
+    "totalItems": 3,
+    "totalPages": 1
+  },
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2026-09-09T10:38:41.720Z",
+    "isDevelopmentSample": true,
+    "notice": {
+      "en": "Official-source research drafts awaiting independent review.",
+      "bn": "সরকারি উৎসভিত্তিক খসড়া গবেষণা পৃথক পর্যালোচনার অপেক্ষায়।"
+    }
+  }
+}

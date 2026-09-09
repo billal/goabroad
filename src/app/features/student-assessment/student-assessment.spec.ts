@@ -3,6 +3,8 @@ import { provideRouter } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { StudentAssessment } from './student-assessment';
 import {
+  ProgramRepository,
+  InstitutionRepository,
   CountryRepository,
   EducationLevelRepository,
   DegreeLevelRepository,
@@ -23,6 +25,8 @@ describe('Student questionnaire', () => {
       imports: [StudentAssessment],
       providers: [
         provideRouter([]),
+        { provide: ProgramRepository, useValue: { list: () => of(catalog.programs) } },
+        { provide: InstitutionRepository, useValue: { list: () => of(catalog.institutions) } },
         { provide: CountryRepository, useValue: { list: () => of(catalog.countries) } },
         {
           provide: EducationLevelRepository,
@@ -40,6 +44,19 @@ describe('Student questionnaire', () => {
     fixture.detectChanges();
     return fixture;
   }
+  it('submits the form from the aligned footer and retains validation', async () => {
+    const fixture = await create();
+    const element = fixture.nativeElement as HTMLElement;
+    const next = element.querySelector<HTMLButtonElement>(
+      '.assessment-footer button[type="submit"]',
+    )!;
+    expect(next.form).toBe(element.querySelector('form'));
+    next.click();
+    await fixture.whenStable();
+    fixture.detectChanges();
+    expect(fixture.componentInstance.step()).toBe(0);
+    expect(element.querySelector('[aria-invalid="true"]')).not.toBeNull();
+  });
   it('validates next, reviews all steps, supports editing and clears storage on completion', async () => {
     const fixture = await create();
     const app = fixture.componentInstance;
@@ -57,9 +74,7 @@ describe('Student questionnaire', () => {
     fixture.detectChanges();
     expect(app.completed()?.annualTuitionBudget.currency).toBe('USD');
     expect(sessionStorage.getItem(DRAFT_KEY)).toBeNull();
-    expect((fixture.nativeElement as HTMLElement).textContent).toContain(
-      'Your questionnaire is complete',
-    );
+    expect((fixture.nativeElement as HTMLElement).textContent).toContain('Assessment result');
     expect(TestBed.inject(AssessmentSession).profile()?.annualTuitionBudget.currency).toBe('USD');
     expect((fixture.nativeElement as HTMLElement).querySelector('a[href*="programs"]')).toBeNull();
   });

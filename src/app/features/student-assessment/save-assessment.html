@@ -1,0 +1,77 @@
+@if (showConsultancy()) {
+<section class="consultancy" aria-labelledby="consultancy-heading">
+  <p class="eyebrow">{{ t('agencyIntro') }}</p>
+  <h2 id="consultancy-heading">{{ t('agencyTitle') }}</h2>
+  <div class="agency-grid">
+    @for (key of ['exampleOne', 'exampleTwo']; track key) {
+      <article>
+        <h3>{{ key === 'exampleOne' ? t('exampleOne') : t('exampleTwo') }}</h3>
+        <p>{{ t('placeholder') }}</p>
+      </article>
+    }
+  </div>
+  <aside class="agency-notice" aria-labelledby="agency-warning-heading">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M12 3 2 21h20L12 3Z M12 9v5 M12 17h.01" />
+    </svg>
+    <div>
+      <strong id="agency-warning-heading">{{ t('warning') }}</strong>
+      <p>{{ t('agencyResponsibility') }}</p>
+    </div>
+  </aside>
+</section>
+}
+<dialog
+  #dialog
+  aria-labelledby="save-heading"
+  aria-describedby="save-notice"
+  (cancel)="clear()"
+  (close)="clear()"
+>
+  <div class="dialog-heading">
+    <h2 id="save-heading">{{ t('title') }}</h2>
+    <button type="button" class="close" (click)="close()" [attr.aria-label]="t('close')">×</button>
+  </div>
+  <p id="save-notice">{{ t('unavailable') }}</p>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label for="save-email">{{ t('email') }}</label>
+    <input
+      id="save-email"
+      type="email"
+      autocomplete="email"
+      formControlName="email"
+      required
+      autofocus
+    />
+    <label for="save-password">{{ t('password') }}</label>
+    <input
+      id="save-password"
+      type="password"
+      autocomplete="new-password"
+      formControlName="password"
+      required
+      minlength="8"
+    />
+    <label for="save-confirm">{{ t('confirm') }}</label>
+    <input
+      id="save-confirm"
+      type="password"
+      autocomplete="new-password"
+      formControlName="confirm"
+      required
+    />
+    @if (attempted()) {
+      <p role="alert">{{ invalid() ? t('invalid') : t('unavailable') }}</p>
+    }
+    <button type="submit">{{ t('submit') }}</button>
+  </form>
+</dialog>

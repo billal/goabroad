@@ -1,0 +1,75 @@
+<section aria-labelledby="work-results-heading">
+  <h2 id="work-results-heading">{{ t('title') }}</h2>
+  @if (loading()) {
+    <p role="status">{{ i18n.text().loading }}</p>
+  } @else if (failed()) {
+    <div role="alert">
+      <p>{{ i18n.text().navigationError }}</p>
+      <button type="button" (click)="load()">{{ i18n.text().retry }}</button>
+    </div>
+  } @else {
+    <div class="tools">
+      <p role="status">{{ t('count') }}: {{ rows().length }}</p>
+      <div>
+        <label for="work-country">{{ t('country') }}</label
+        ><select id="work-country" [formControl]="country">
+          <option value="">{{ preferences()?.length ? preferences()!.join(', ') : t('all') }}</option>
+          @if (preferences()?.length) {
+            <option value="all">{{ t('all') }}</option>
+          }
+          @for (guide of guides(); track guide.id) {
+            <option [value]="guide.countryCode">{{ name(guide.name) }}</option>
+          }
+        </select>
+      </div>
+    </div>
+    @if (!rows().length) {
+      <p>{{ t('empty') }}</p>
+    }
+    <div class="cards">
+      @for (guide of rows(); track guide.id) {
+        <article>
+          <div class="card-heading">
+            <span class="icon"><app-icon name="globe" /></span>
+            <div>
+              <h3>{{ name(guide.name) }}</h3>
+              <p>{{ name(guide.route) }}</p>
+            </div>
+          </div>
+          <p class="status">
+            {{ t('review') }} · {{ t('checked') }}:
+            {{ guide.lastCheckedAt | date: 'yyyy-MM-dd' : 'UTC' }}
+          </p>
+          <h4>{{ t('steps') }}</h4>
+          <ol>
+            @for (step of guide.steps; track $index) {
+              <li>
+                <p>{{ name(step.text) }}</p>
+                <a
+                  [href]="source(guide, step.sourceId).url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >{{ t('source') }}: {{ source(guide, step.sourceId).title }}</a
+                >
+              </li>
+            }
+          </ol>
+          <div class="links">
+            <a
+              [href]="source(guide, guide.jobSourceId).url"
+              target="_blank"
+              rel="noopener noreferrer"
+              >{{ t('jobs') }} <span aria-hidden="true">↗</span></a
+            ><a
+              [href]="source(guide, guide.visaSourceId).url"
+              target="_blank"
+              rel="noopener noreferrer"
+              >{{ t('visa') }} <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </article>
+      }
+    </div>
+  }
+  <p class="disclaimer">{{ t('disclaimer') }}</p>
+</section>

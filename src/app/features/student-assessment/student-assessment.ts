@@ -35,10 +35,12 @@ import {
 } from './assessment-form';
 import { AssessmentStorage } from './assessment-storage';
 import { assessmentBengali, assessmentEnglish, labels } from './assessment-text';
+import { PilotResults } from './pilot-results';
+import { SaveAssessment } from './save-assessment';
 
 @Component({
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, PilotResults, SaveAssessment],
   templateUrl: './student-assessment.html',
   styleUrl: './student-assessment.scss',
 })

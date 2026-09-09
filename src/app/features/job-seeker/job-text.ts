@@ -1,4 +1,19 @@
 export const jobText = {
+  resultsTitle: ['Assessment result', 'মূল্যায়নের ফলাফল'],
+  resultsIntro: ['Based on your selected country of interest, explore guidance on finding jobs and starting a work-visa application. You can select another country below. These guides do not assess your eligibility or show live vacancies.', 'আপনার পছন্দের দেশের ভিত্তিতে চাকরি খোঁজা ও কর্মভিসার আবেদন শুরুর নির্দেশনা দেখুন। নিচে অন্য দেশ বাছতে পারেন। এই নির্দেশিকা আপনার যোগ্যতা যাচাই করে না বা সরাসরি চাকরির বিজ্ঞপ্তি দেখায় না।'],
+  experienceYears: ['Total work experience (years)', 'মোট কাজের অভিজ্ঞতা (বছর)'],
+  noExperience: ['No work experience', 'কাজের অভিজ্ঞতা নেই'],
+  year: ['year', 'বছর'],
+  years: ['years', 'বছর'],
+  exactExperience: ['Other — enter exact months', 'অন্য — সঠিক মাসের সংখ্যা লিখুন'],
+  optionsLoading: ['Loading options…', 'বিকল্প লোড হচ্ছে…'],
+  optionsError: [
+    'Options could not be loaded. Try again or choose Other to enter your answer.',
+    'বিকল্প লোড হয়নি। আবার চেষ্টা করুন অথবা অন্য বিকল্প বেছে নিজের উত্তর লিখুন।',
+  ],
+  chooseOption: ['Choose an option', 'একটি বিকল্প বাছুন'],
+  otherOption: ['Other — enter your answer', 'অন্য — নিজের উত্তর লিখুন'],
+  customAnswer: ['Your answer', 'আপনার উত্তর'],
   summaryTitle: ['Your job-seeker profile', 'আপনার চাকরিপ্রার্থী প্রোফাইল'],
   selfReported: [
     'This summary reflects only the answers you supplied. Qualifications, skills, and language ability have not been verified.',
@@ -54,14 +69,14 @@ export const jobText = {
     'Desired job roles (comma-separated)',
     'কাঙ্ক্ষিত কাজের পদ (কমা দিয়ে আলাদা করুন)',
   ],
-  countries: ['Preferred countries (comma-separated)', 'পছন্দের দেশগুলো (কমা দিয়ে আলাদা করুন)'],
+  countries: ['Preferred country', 'পছন্দের দেশ'],
   educationHint: [
-    'Describe your qualification in your own words, or write “No formal qualification”. Optional fields can be left blank. No qualification equivalence is inferred.',
-    'নিজের ভাষায় যোগ্যতা লিখুন, অথবা “প্রাতিষ্ঠানিক যোগ্যতা নেই” লিখুন। ঐচ্ছিক ঘর ফাঁকা রাখতে পারেন। যোগ্যতার সমতা ধরে নেওয়া হয় না।',
+    'Select your highest completed qualification and field of study. Choose Other if your answer is not listed. Optional fields may remain blank; no qualification equivalence is inferred.',
+    'সর্বোচ্চ সম্পন্ন শিক্ষাগত যোগ্যতা ও পড়াশোনার বিষয় বাছুন। তালিকায় না থাকলে অন্য বিকল্প বাছুন। ঐচ্ছিক ঘর ফাঁকা রাখতে পারেন; যোগ্যতার সমতা ধরে নেওয়া হয় না।',
   ],
   experienceHint: [
-    'Enter whole months, counting overlapping jobs only once. Use 0 for no experience; leave blank if unknown. If you enter experience above zero, describe your job roles.',
-    'পূর্ণ মাস লিখুন; একই সময়ের একাধিক কাজের সময় একবারই গণনা করুন। অভিজ্ঞতা না থাকলে ০ দিন; অজানা হলে ফাঁকা রাখুন। শূন্যের বেশি অভিজ্ঞতা দিলে কাজের পদ লিখুন।',
+    'Select your years of work experience, counting overlapping jobs only once. Choose Other for partial years or exact months. Leave blank if unknown. If you have work experience, describe your job roles.',
+    'কাজের অভিজ্ঞতার বছর বাছুন; একই সময়ের একাধিক কাজের সময় একবারই গণনা করুন। আংশিক বছর বা সঠিক মাসের সংখ্যা দিতে অন্য বাছুন। অজানা হলে ফাঁকা রাখুন। অভিজ্ঞতা থাকলে কাজের পদ লিখুন।',
   ],
   preferencesHint: [
     'List the roles you want. Countries are optional if you are undecided. These preferences do not establish permission to work in a country.',

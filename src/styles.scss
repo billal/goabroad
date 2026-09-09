@@ -24,6 +24,7 @@ html[lang='bn'] {
 }
 body {
   margin: 0;
+  overflow-x: clip;
 }
 .container {
   max-width: 78rem;

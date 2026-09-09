@@ -1,14 +1,81 @@
 {
-  "data": [],
+  "data": [
+    {
+      "id": "city-enschede",
+      "slug": "city-enschede",
+      "name": {
+        "en": "Enschede",
+        "bn": null
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [
+        {
+          "id": "location",
+          "url": "https://www.utwente.nl/en/education/master/programmes/computer-science/masters-structure/factsheet/",
+          "title": "University of Twente — location",
+          "checkedAt": "2026-09-09T07:25:52.332Z"
+        }
+      ],
+      "countryId": "country-nl"
+    },
+    {
+      "id": "city-sheffield",
+      "slug": "city-sheffield",
+      "name": {
+        "en": "Sheffield",
+        "bn": null
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [
+        {
+          "id": "location",
+          "url": "https://sheffield.ac.uk/postgraduate/taught/courses/2026/computer-science-msc",
+          "title": "University of Sheffield — location",
+          "checkedAt": "2026-09-09T07:25:52.332Z"
+        }
+      ],
+      "countryId": "country-gb"
+    },
+    {
+      "id": "city-winnipeg",
+      "slug": "city-winnipeg",
+      "name": {
+        "en": "Winnipeg",
+        "bn": null
+      },
+      "publicationStatus": "draft",
+      "verificationStatus": "needsReview",
+      "lastCheckedAt": "2026-09-09T07:25:52.332Z",
+      "updatedAt": "2026-09-09T07:25:52.332Z",
+      "isDevelopmentSample": true,
+      "sources": [
+        {
+          "id": "location",
+          "url": "https://umanitoba.ca/explore/programs-of-study/computer-science-bsc",
+          "title": "University of Manitoba — location",
+          "checkedAt": "2026-09-09T07:25:52.332Z"
+        }
+      ],
+      "countryId": "country-ca"
+    }
+  ],
   "pagination": {
     "page": 1,
     "pageSize": 20,
-    "totalItems": 0,
-    "totalPages": 0
+    "totalItems": 3,
+    "totalPages": 1
   },
   "metadata": {
     "version": "1.0",
-    "lastUpdated": "2026-09-08T00:00:00Z",
+    "lastUpdated": "2026-09-09T07:25:52.332Z",
     "isDevelopmentSample": true,
     "notice": {
       "en": "Development sample only. Not verified information; do not use for admission or visa decisions.",
